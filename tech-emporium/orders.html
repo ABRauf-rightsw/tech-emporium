@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | Tech Emporium</title>
+  <meta name="description" content="View and track your computer hardware order status, payments, and shipments at Tech Emporium.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- Sticky Navbar Header -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark glass-nav fixed-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
+          <i class="bi bi-cpu text-electric" style="font-size: 1.8rem;"></i>
+          <span>TECH <span class="text-electric">EMPORIUM</span></span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="products.html">Shop Catalog</a></li>
+            <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-3">
+            <a href="wishlist.html" class="nav-icon-btn position-relative" aria-label="View Wishlist">
+              <i class="bi bi-heart"></i>
+              <span class="badge-counter wishlist-counter" style="display: none;">0</span>
+            </a>
+            <a href="cart.html" class="nav-icon-btn position-relative" aria-label="View Cart">
+              <i class="bi bi-cart"></i>
+              <span class="badge-counter cart-counter" style="display: none;">0</span>
+            </a>
+            <a href="my-account.html" class="nav-icon-btn" aria-label="My Account"><i class="bi bi-person-circle"></i></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Orders Tracking History Content -->
+  <main style="margin-top: 100px;" class="mb-5">
+    <div class="container">
+      
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb small">
+          <li class="breadcrumb-item"><a href="index.html" class="text-electric">Home</a></li>
+          <li class="breadcrumb-item"><a href="my-account.html" class="text-electric">My Account</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Order History</li>
+        </ol>
+      </nav>
+
+      <!-- Order Success Banner (Shown dynamically when redirecting from Checkout) -->
+      <div class="alert alert-success glass-card border border-success p-4 mb-5 shadow-lg text-center" id="order-success-banner" style="display: none; background: rgba(0, 230, 118, 0.08);">
+        <i class="bi bi-check-circle-fill text-success" style="font-size: 3.5rem;"></i>
+        <h3 class="text-white mt-3 mb-2">Thank You for Your Order!</h3>
+        <p class="text-muted">
+          Your order has been recorded successfully. Our team will verify shipping coordinates and reach out within 24 hours.
+        </p>
+        <p class="text-white mb-4">
+          Order Reference Number: <strong class="text-electric" id="success-order-number">TE-XXXXXX</strong>
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+          <a href="products.html" class="btn btn-sm btn-electric px-3 rounded-pill">Continue Shopping</a>
+          <button type="button" class="btn btn-sm btn-outline-light rounded-pill px-3" onclick="document.getElementById('order-success-banner').style.display='none'">Dismiss Message</button>
+        </div>
+      </div>
+
+      <h1 class="text-white mb-4">My Order Records</h1>
+      
+      <!-- List Container for orders (rendered dynamically in app.js) -->
+      <section id="orders-history-list">
+        <!-- Rendered dynamically -->
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="pt-5 pb-3">
+    <div class="container text-center">
+      <p class="small text-muted mb-0">&copy; 2026 Tech Emporium. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <button id="btn-back-to-top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

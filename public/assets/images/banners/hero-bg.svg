@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="heroBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1128"/>
+      <stop offset="50%" stop-color="#0d1b3a"/>
+      <stop offset="100%" stop-color="#061525"/>
+    </linearGradient>
+    <radialGradient id="glowBlue" cx="75%" cy="25%" r="55%">
+      <stop offset="0%" stop-color="#0066ff" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#0066ff" stop-opacity="0"/>
+    </radialGradient>
+    <g id="mini-laptop">
+      <rect x="12" y="4" width="76" height="46" rx="5" fill="#94a3b8" opacity="0.85"/>
+      <rect x="18" y="10" width="64" height="34" rx="3" fill="#1e293b"/>
+      <path d="M 6 50 L 94 50 L 100 60 L 0 60 Z" fill="#cbd5e1" opacity="0.9"/>
+      <path d="M 30 52 L 70 52" stroke="#0066ff" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+    </g>
+    <g id="mini-headphones">
+      <path d="M18 38 Q18 12 50 12 Q82 12 82 38" fill="none" stroke="#94a3b8" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+      <rect x="10" y="34" width="18" height="26" rx="7" fill="#64748b" opacity="0.85"/>
+      <rect x="72" y="34" width="18" height="26" rx="7" fill="#64748b" opacity="0.85"/>
+    </g>
+    <g id="mini-keyboard">
+      <rect x="8" y="18" width="84" height="36" rx="6" fill="#94a3b8" opacity="0.8"/>
+      <rect x="14" y="24" width="72" height="24" rx="4" fill="#e2e8f0" opacity="0.7"/>
+      <path d="M20 32h60M20 40h50" stroke="#0066ff" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+    </g>
+    <g id="mini-mouse">
+      <ellipse cx="50" cy="38" rx="28" ry="34" fill="#94a3b8" opacity="0.8"/>
+      <ellipse cx="50" cy="30" rx="14" ry="18" fill="#e2e8f0" opacity="0.6"/>
+    </g>
+  </defs>
+
+  <rect width="1920" height="800" fill="url(#heroBgGrad)"/>
+  <rect width="1920" height="800" fill="url(#glowBlue)"/>
+
+  <!-- Scattered laptops -->
+  <use href="#mini-laptop" transform="translate(80,120) scale(1.4) rotate(-8)" opacity="0.22"/>
+  <use href="#mini-laptop" transform="translate(320,480) scale(1.1) rotate(6)" opacity="0.18"/>
+  <use href="#mini-laptop" transform="translate(520,80) scale(0.95) rotate(-4)" opacity="0.2"/>
+  <use href="#mini-laptop" transform="translate(780,520) scale(1.25) rotate(10)" opacity="0.16"/>
+  <use href="#mini-laptop" transform="translate(1050,140) scale(1.5) rotate(-12)" opacity="0.24"/>
+  <use href="#mini-laptop" transform="translate(1280,450) scale(1.0) rotate(5)" opacity="0.19"/>
+  <use href="#mini-laptop" transform="translate(1480,90) scale(1.35) rotate(-6)" opacity="0.21"/>
+  <use href="#mini-laptop" transform="translate(1680,380) scale(1.15) rotate(8)" opacity="0.17"/>
+  <use href="#mini-laptop" transform="translate(200,280) scale(0.85) rotate(15)" opacity="0.14"/>
+  <use href="#mini-laptop" transform="translate(920,320) scale(1.05) rotate(-9)" opacity="0.15"/>
+  <use href="#mini-laptop" transform="translate(1620,580) scale(0.9) rotate(4)" opacity="0.16"/>
+  <use href="#mini-laptop" transform="translate(1180,620) scale(1.2) rotate(-7)" opacity="0.18"/>
+
+  <!-- Scattered headphones -->
+  <use href="#mini-headphones" transform="translate(450,180) scale(1.3) rotate(-5)" opacity="0.2"/>
+  <use href="#mini-headphones" transform="translate(700,60) scale(1.0) rotate(8)" opacity="0.17"/>
+  <use href="#mini-headphones" transform="translate(1350,300) scale(1.4) rotate(-10)" opacity="0.22"/>
+  <use href="#mini-headphones" transform="translate(1580,200) scale(1.1) rotate(6)" opacity="0.19"/>
+  <use href="#mini-headphones" transform="translate(1800,480) scale(0.95) rotate(-4)" opacity="0.16"/>
+  <use href="#mini-headphones" transform="translate(260,560) scale(1.2) rotate(12)" opacity="0.18"/>
+  <use href="#mini-headphones" transform="translate(1100,40) scale(0.9) rotate(-6)" opacity="0.15"/>
+  <use href="#mini-headphones" transform="translate(860,650) scale(1.15) rotate(3)" opacity="0.17"/>
+
+  <!-- Keyboards & mice accents -->
+  <use href="#mini-keyboard" transform="translate(600,350) scale(1.1) rotate(-8)" opacity="0.12"/>
+  <use href="#mini-keyboard" transform="translate(1420,520) scale(0.9) rotate(5)" opacity="0.11"/>
+  <use href="#mini-mouse" transform="translate(380,400) scale(0.85) rotate(0)" opacity="0.12"/>
+  <use href="#mini-mouse" transform="translate(1240,180) scale(0.75) rotate(-5)" opacity="0.11"/>
+  <use href="#mini-mouse" transform="translate(1750,120) scale(0.8) rotate(8)" opacity="0.1"/>
+
+  <!-- Subtle grid -->
+  <g stroke="#0066ff" stroke-opacity="0.05" stroke-width="1">
+    <path d="M0 160 H1920 M0 320 H1920 M0 480 H1920 M0 640 H1920"/>
+    <path d="M240 0 V800 M480 0 V800 M720 0 V800 M960 0 V800 M1200 0 V800 M1440 0 V800 M1680 0 V800"/>
+  </g>
+</svg>

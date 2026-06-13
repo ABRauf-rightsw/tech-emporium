@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Product | Tech Emporium Admin</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin-style.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div id="admin-wrapper">
+    <!-- Sidebar -->
+    <aside id="admin-sidebar">
+      <div class="sidebar-brand">
+        <a class="d-flex align-items-center gap-2 text-white" href="dashboard.html">
+          <i class="bi bi-cpu text-primary fs-4"></i>
+          <span>TECH <span class="text-primary">EMPORIUM</span></span>
+        </a>
+      </div>
+      
+      <div class="sidebar-menu">
+        <div class="menu-label">Main Menu</div>
+        <a href="dashboard.html" class="menu-item">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard</span>
+        </a>
+        
+        <div class="menu-label mt-4">Catalog</div>
+        <a href="products.html" class="menu-item">
+          <i class="bi bi-box-seam"></i>
+          <span>Products</span>
+        </a>
+        <a href="categories.html" class="menu-item">
+          <i class="bi bi-grid"></i>
+          <span>Categories</span>
+        </a>
+        <a href="brands.html" class="menu-item">
+          <i class="bi bi-award"></i>
+          <span>Brands</span>
+        </a>
+        <a href="inventory.html" class="menu-item">
+          <i class="bi bi-journal-text"></i>
+          <span>Inventory</span>
+        </a>
+        
+        <div class="menu-label mt-4">Sales &amp; Customers</div>
+        <a href="orders.html" class="menu-item">
+          <i class="bi bi-cart3"></i>
+          <span>Orders</span>
+        </a>
+        <a href="customers.html" class="menu-item">
+          <i class="bi bi-people"></i>
+          <span>Customers</span>
+        </a>
+        <a href="sellers.html" class="menu-item">
+          <i class="bi bi-shop"></i>
+          <span>Sellers</span>
+        </a>
+
+        <div class="menu-label mt-4">Marketing &amp; Reviews</div>
+        <a href="reviews.html" class="menu-item">
+          <i class="bi bi-star"></i>
+          <span>Reviews</span>
+        </a>
+        <a href="coupons.html" class="menu-item">
+          <i class="bi bi-percent"></i>
+          <span>Coupons</span>
+        </a>
+        <a href="banners.html" class="menu-item">
+          <i class="bi bi-image"></i>
+          <span>Banners</span>
+        </a>
+
+        <div class="menu-label mt-4">Management</div>
+        <a href="reports.html" class="menu-item">
+          <i class="bi bi-bar-chart"></i>
+          <span>Reports</span>
+        </a>
+        <a href="settings.html" class="menu-item">
+          <i class="bi bi-gear"></i>
+          <span>Settings</span>
+        </a>
+        <a href="profile.html" class="menu-item">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="menu-item text-danger w-100 border-0 bg-transparent">
+          <i class="bi bi-box-arrow-right text-danger"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <div id="admin-content">
+      <!-- Header -->
+      <header id="admin-header">
+        <div class="d-flex align-items-center gap-3">
+          <button class="header-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="bi bi-justify"></i>
+          </button>
+          <div class="d-none d-md-flex align-items-center gap-2">
+            <span class="badge bg-light text-muted border">Edit Mode</span>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <!-- User Profile Dropdown -->
+          <div class="dropdown profile-dropdown">
+            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Admin Avatar" class="profile-avatar" id="headerAdminAvatar">
+              <div class="profile-info d-none d-lg-block">
+                <span class="profile-name" id="headerAdminName">Zain Ahmed</span>
+                <span class="profile-role">Super Admin</span>
+              </div>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> My Profile</a></li>
+              <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear"></i> Store Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <main class="content-body">
+        <div class="page-title-box">
+          <h1 class="page-title">Edit Product Details</h1>
+          <p class="text-muted small mb-0">Update specifications, stock level, or pricing parameters of this item.</p>
+        </div>
+
+        <form id="editProductForm" class="needs-validation" novalidate>
+          <div class="row g-4">
+            <!-- Left fields column -->
+            <div class="col-lg-8">
+              <div class="card-custom mb-4">
+                <div class="card-header-custom">
+                  <h5 class="card-title-custom">General Information</h5>
+                </div>
+                <div class="card-body-custom">
+                  <!-- Product Name -->
+                  <div class="mb-3">
+                    <label for="productName" class="form-label fw-semibold">Product Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="productName" placeholder="e.g. Dell XPS 13 9340" required>
+                    <div class="invalid-feedback">Product name is required.</div>
+                  </div>
+                  <!-- Product Description -->
+                  <div class="mb-3">
+                    <label for="productDesc" class="form-label fw-semibold">Product Description</label>
+                    <textarea class="form-control" id="productDesc" rows="4" placeholder="Brief overview of key features, performance metrics, and build materials..."></textarea>
+                  </div>
+                  <!-- Product Specifications -->
+                  <div class="mb-0">
+                    <label for="productSpecs" class="form-label fw-semibold">Technical Specifications <span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="productSpecs" rows="6" placeholder="Specs..." required></textarea>
+                    <div class="invalid-feedback">Technical specs details are required.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Inventory and pricing -->
+              <div class="card-custom">
+                <div class="card-header-custom">
+                  <h5 class="card-title-custom">Pricing &amp; Stock</h5>
+                </div>
+                <div class="card-body-custom">
+                  <div class="row g-3">
+                    <!-- Price -->
+                    <div class="col-md-6">
+                      <label for="productPrice" class="form-label fw-semibold">Regular Price (PKR) <span class="text-danger">*</span></label>
+                      <div class="input-group">
+                        <span class="input-group-text">Rs.</span>
+                        <input type="number" class="form-control" id="productPrice" min="1" placeholder="250000" required>
+                        <div class="invalid-feedback">Please input a valid price.</div>
+                      </div>
+                    </div>
+                    <!-- Sale Price -->
+                    <div class="col-md-6">
+                      <label for="productSalePrice" class="form-label fw-semibold">Sale Price (PKR)</label>
+                      <div class="input-group">
+                        <span class="input-group-text">Rs.</span>
+                        <input type="number" class="form-control" id="productSalePrice" placeholder="245000">
+                      </div>
+                    </div>
+                    <!-- SKU -->
+                    <div class="col-md-6">
+                      <label for="productSku" class="form-label fw-semibold">SKU Code <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="productSku" placeholder="e.g. LP-DE-XP-13" required>
+                      <div class="invalid-feedback">A unique SKU key is required.</div>
+                    </div>
+                    <!-- Stock -->
+                    <div class="col-md-6">
+                      <label for="productStock" class="form-label fw-semibold">Stock Quantity <span class="text-danger">*</span></label>
+                      <input type="number" class="form-control" id="productStock" min="0" placeholder="10" required>
+                      <div class="invalid-feedback">Input stock count.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column Metadata -->
+            <div class="col-lg-4">
+              <!-- Organization and Status -->
+              <div class="card-custom mb-4">
+                <div class="card-header-custom">
+                  <h5 class="card-title-custom">Product Status &amp; Metadata</h5>
+                </div>
+                <div class="card-body-custom">
+                  <!-- Status -->
+                  <div class="mb-3">
+                    <label for="productStatus" class="form-label fw-semibold">Publish Status</label>
+                    <select class="form-select" id="productStatus">
+                      <option value="Active">Active</option>
+                      <option value="Inactive">Inactive</option>
+                    </select>
+                  </div>
+                  <!-- Category -->
+                  <div class="mb-3">
+                    <label for="productCategory" class="form-label fw-semibold">Category <span class="text-danger">*</span></label>
+                    <select class="form-select" id="productCategory" required>
+                      <option value="">Choose Category</option>
+                      <!-- Loaded dynamically -->
+                    </select>
+                    <div class="invalid-feedback">Please choose a category.</div>
+                  </div>
+                  <!-- Brand -->
+                  <div class="mb-0">
+                    <label for="productBrand" class="form-label fw-semibold">Brand <span class="text-danger">*</span></label>
+                    <select class="form-select" id="productBrand" required>
+                      <option value="">Choose Brand</option>
+                      <!-- Loaded dynamically -->
+                    </select>
+                    <div class="invalid-feedback">Please choose a brand.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Graphic display -->
+              <div class="card-custom">
+                <div class="card-header-custom">
+                  <h5 class="card-title-custom">Product Graphics</h5>
+                </div>
+                <div class="card-body-custom text-center">
+                  <div class="mb-3 p-3 bg-light rounded d-flex align-items-center justify-content-center" style="height: 150px;">
+                    <img id="productImagePreview" src="" alt="Preview" class="img-fluid" style="max-height: 120px; object-fit: contain;">
+                  </div>
+                  <div class="image-upload-wrapper py-3" onclick="alert('Image upload simulated!')">
+                    <i class="bi bi-cloud-arrow-up image-upload-icon d-block fs-3 mb-1"></i>
+                    <span class="d-block small fw-semibold text-dark">Upload New Graphics</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Buttons -->
+              <div class="d-flex gap-2 mt-4">
+                <a href="products.html" class="btn btn-custom-outline flex-fill py-2">Cancel</a>
+                <button type="submit" class="btn btn-custom-primary flex-fill py-2">Update Product</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </main>
+
+      <!-- Footer -->
+      <footer class="admin-footer text-center">
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+          <p class="mb-0">&copy; 2026 Tech Emporium. Admin Dashboard Panel.</p>
+          <p class="mb-0">Powered by Bootstrap 5 &amp; Vanilla JS.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    let products = [];
+    let productId = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      products = db.get("products", DEFAULT_PRODUCTS);
+
+      // Load Profile Info
+      const profileObj = db.get("profile", DEFAULT_ADMIN);
+      document.getElementById("headerAdminName").textContent = profileObj.name;
+
+      // Extract ID from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      productId = parseInt(urlParams.get("id"));
+
+      const product = products.find(p => p.id === productId);
+      if (!product) {
+        alert("Product not found!");
+        window.location.href = "products.html";
+        return;
+      }
+
+      // Populate Select Inputs
+      const categories = db.get("categories", DEFAULT_CATEGORIES);
+      const brands = db.get("brands", DEFAULT_BRANDS);
+
+      const categorySelect = document.getElementById("productCategory");
+      categories.forEach(c => {
+        categorySelect.innerHTML += `<option value="${c.name}">${c.name}</option>`;
+      });
+
+      const brandSelect = document.getElementById("productBrand");
+      brands.forEach(b => {
+        brandSelect.innerHTML += `<option value="${b.name}">${b.name}</option>`;
+      });
+
+      // Fill Form Inputs with existing data
+      document.getElementById("productName").value = product.name;
+      document.getElementById("productDesc").value = product.desc || "";
+      document.getElementById("productSpecs").value = product.specs || "";
+      document.getElementById("productPrice").value = product.price;
+      document.getElementById("productSalePrice").value = product.salePrice || "";
+      document.getElementById("productSku").value = product.sku;
+      document.getElementById("productStock").value = product.stock;
+      document.getElementById("productStatus").value = product.status;
+      document.getElementById("productCategory").value = product.category;
+      document.getElementById("productBrand").value = product.brand;
+
+      // Image preview
+      let finalImg = product.image;
+      if (!product.image.includes("/")) {
+        if (product.category.toLowerCase().includes("gaming")) finalImg = "../assets/images/laptops/gaming-laptop.svg";
+        else if (product.category.toLowerCase().includes("business")) finalImg = "../assets/images/laptops/business-laptop.svg";
+        else if (product.category.toLowerCase().includes("student")) finalImg = "../assets/images/laptops/student-laptop.svg";
+        else if (product.category.toLowerCase().includes("monitor")) finalImg = "../assets/images/accessories/monitor.svg";
+        else if (product.category.toLowerCase().includes("storage")) finalImg = "../assets/images/accessories/ssd.svg";
+        else finalImg = "../assets/images/accessories/keyboard.svg";
+      }
+      document.getElementById("productImagePreview").src = finalImg;
+
+      // Submit listener
+      const form = document.getElementById("editProductForm");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        if (!form.checkValidity()) {
+          form.classList.add("was-validated");
+          return;
+        }
+
+        // Update product attributes
+        product.name = document.getElementById("productName").value.trim();
+        product.desc = document.getElementById("productDesc").value.trim();
+        product.specs = document.getElementById("productSpecs").value.trim();
+        product.price = parseFloat(document.getElementById("productPrice").value);
+        product.salePrice = parseFloat(document.getElementById("productSalePrice").value) || null;
+        product.sku = document.getElementById("productSku").value.trim().toUpperCase();
+        product.stock = parseInt(document.getElementById("productStock").value);
+        product.status = document.getElementById("productStatus").value;
+        product.category = document.getElementById("productCategory").value;
+        product.brand = document.getElementById("productBrand").value;
+
+        db.save("products", products);
+
+        alert("Product details updated successfully!");
+        window.location.href = "products.html";
+      });
+    });
+  </script>
+</body>
+</html>

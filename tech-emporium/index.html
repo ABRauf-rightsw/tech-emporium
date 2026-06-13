@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Emporium | Premium Laptops & Accessories in Pakistan</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Shop the latest premium laptops, gaming gear, business notebooks, and computer accessories in Pakistan. Official warranty, secure payments, and fast shipping.">
+  <meta name="keywords" content="Laptops in Pakistan, Gaming Laptops, Dell XPS, HP Spectre, Lenovo ThinkPad, ASUS ROG, SSD, RAM, Keyboards, Pakistan computer store">
+  
+  <!-- CSS Stylesheets -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/style.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- We import bootstrap via official cdn, but let's use the local file naming if preferred, but standard cdn works perfectly and guarantees bootstrap load -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- Sticky Navbar Header -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark glass-nav fixed-top">
+      <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
+          <i class="bi bi-cpu text-electric" style="font-size: 1.8rem;"></i>
+          <span>TECH <span class="text-electric">EMPORIUM</span></span>
+        </a>
+        
+        <!-- Toggle button for mobile -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Links -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Shop Catalog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categories.html">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="faq.html">FAQ</a>
+            </li>
+          </ul>
+
+          <!-- Action Search & Counters -->
+          <div class="d-flex align-items-center gap-3">
+            <!-- Search Trigger Form -->
+            <form class="d-none d-lg-flex global-search-form" role="search">
+              <div class="input-group">
+                <input class="form-control bg-dark border-secondary text-white rounded-start-pill px-3" type="search" placeholder="Search products..." aria-label="Search">
+                <button class="btn btn-electric rounded-end-pill px-3" type="submit">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </form>
+            
+            <!-- Wishlist Button -->
+            <a href="wishlist.html" class="nav-icon-btn position-relative" aria-label="View Wishlist" id="wishlist-header-btn">
+              <i class="bi bi-heart"></i>
+              <span class="badge-counter wishlist-counter" style="display: none;">0</span>
+            </a>
+            
+            <!-- Cart Button -->
+            <a href="cart.html" class="nav-icon-btn position-relative" aria-label="View Cart" id="cart-header-btn">
+              <i class="bi bi-cart"></i>
+              <span class="badge-counter cart-counter" style="display: none;">0</span>
+            </a>
+
+            <!-- Account Settings Button -->
+            <a href="my-account.html" class="nav-icon-btn" aria-label="My Account" id="account-header-btn">
+              <i class="bi bi-person-circle"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main style="margin-top: 76px;">
+    
+    <!-- 1. Hero Banner Section -->
+    <section class="hero-section py-5 position-relative overflow-hidden">
+      <div class="container py-lg-5">
+        <div class="row align-items-center">
+          <!-- Text Content -->
+          <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
+            <span class="badge bg-electric px-3 py-2 text-uppercase mb-3 fw-bold" style="letter-spacing: 1px;">Pakistan's Ultimate Hardware hub</span>
+            <h1 class="display-4 fw-black text-white mb-3 lh-sm">
+              Latest Laptops &amp; Accessories in Pakistan
+            </h1>
+            <p class="lead text-muted mb-4 fs-5">
+              Experience performance with official laptops, gaming gear, monitors, and storage drives. Get genuine warranties, flat-rate delivery, and 24/7 technical support on Pakistani Rupees.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+              <a href="products.html" class="btn btn-electric px-4 py-3 fs-6">
+                <i class="bi bi-bag-check me-2"></i>Shop Now
+              </a>
+              <a href="categories.html" class="btn btn-outline-light px-4 py-3 fs-6 rounded-pill">
+                Explore Collection
+              </a>
+            </div>
+          </div>
+          <!-- Graphic Illustration/Image -->
+          <div class="col-lg-6 text-center">
+            <div class="p-3">
+              <img src="assets/images/banners/hero.svg" alt="Premium Laptops Banner" class="img-fluid rounded shadow-lg glow-border">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Featured Categories Section -->
+    <section class="py-5" style="background-color: rgba(255, 255, 255, 0.01);">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-8 mx-auto text-center">
+            <h2 class="text-white">Featured Categories</h2>
+            <p class="text-muted">Browse our wide selection of computing systems, storage, and customized peripherals.</p>
+            <div class="mx-auto bg-electric" style="width: 60px; height: 3px; border-radius: 2px;"></div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <!-- Gaming Laptops -->
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="category-card hover-zoom">
+              <img src="assets/images/laptops/gaming-laptop.svg" alt="Gaming Laptops" class="w-100 h-100 object-fit-cover">
+              <div class="category-overlay">
+                <h4 class="text-white">Gaming Laptops</h4>
+                <p class="text-muted small mb-3">High FPS gaming setups with RTX graphics</p>
+                <a href="products.html?category=gaming" class="btn btn-sm btn-electric align-self-start">Shop Now</a>
+              </div>
+            </div>
+          </div>
+          <!-- Business Laptops -->
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="category-card hover-zoom">
+              <img src="assets/images/laptops/business-laptop.svg" alt="Business Laptops" class="w-100 h-100 object-fit-cover">
+              <div class="category-overlay">
+                <h4 class="text-white">Business Laptops</h4>
+                <p class="text-muted small mb-3">Thin, light &amp; military grade secure notebooks</p>
+                <a href="products.html?category=business" class="btn btn-sm btn-electric align-self-start">Shop Now</a>
+              </div>
+            </div>
+          </div>
+          <!-- Student Laptops -->
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="category-card hover-zoom">
+              <img src="assets/images/laptops/student-laptop.svg" alt="Student Laptops" class="w-100 h-100 object-fit-cover">
+              <div class="category-overlay">
+                <h4 class="text-white">Student Laptops</h4>
+                <p class="text-muted small mb-3">Affordable, reliable everyday laptops</p>
+                <a href="products.html?category=student" class="btn btn-sm btn-electric align-self-start">Shop Now</a>
+              </div>
+            </div>
+          </div>
+          <!-- Monitors -->
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="category-card hover-zoom">
+              <img src="assets/images/accessories/monitor.svg" alt="Monitors" class="w-100 h-100 object-fit-cover">
+              <div class="category-overlay">
+                <h4 class="text-white">Premium Monitors</h4>
+                <p class="text-muted small mb-3">High refresh rate gaming &amp; 4K creator panels</p>
+                <a href="products.html?category=monitors" class="btn btn-sm btn-electric align-self-start">Shop Now</a>
+              </div>
+            </div>
+          </div>
+          <!-- Accessories -->
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="category-card hover-zoom">
+              <img src="assets/images/accessories/keyboard.svg" alt="Accessories" class="w-100 h-100 object-fit-cover">
+              <div class="category-overlay">
+                <h4 class="text-white">Peripherals &amp; Accessories</h4>
+                <p class="text-muted small mb-3">Mechanical keyboards, high-res mice &amp; audio gear</p>
+                <a href="products.html?category=accessories" class="btn btn-sm btn-electric align-self-start">Shop Now</a>
+              </div>
+            </div>
+          </div>
+          <!-- Storage Devices -->
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="category-card hover-zoom">
+              <img src="assets/images/accessories/ssd.svg" alt="Storage Devices" class="w-100 h-100 object-fit-cover">
+              <div class="category-overlay">
+                <h4 class="text-white">Fast Storage Drives</h4>
+                <p class="text-muted small mb-3">NVMe SSDs, high-capacity RAM modules</p>
+                <a href="products.html?category=storage" class="btn btn-sm btn-electric align-self-start">Shop Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Featured Products Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-8 mx-auto text-center">
+            <h2 class="text-white">Featured Products</h2>
+            <p class="text-muted">Explore our curated list of trending tech setups with special prices in PKR.</p>
+            <div class="mx-auto bg-electric" style="width: 60px; height: 3px; border-radius: 2px;"></div>
+          </div>
+        </div>
+        
+        <!-- Grid dynamically loaded via JS -->
+        <div class="row" id="featured-products-grid">
+          <!-- Fallback or dynamic content loading -->
+        </div>
+        
+        <div class="text-center mt-4">
+          <a href="products.html" class="btn btn-electric px-4 py-3">View Full Store Catalog</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Best Selling Laptops Section -->
+    <section class="py-5" style="background-color: rgba(255, 255, 255, 0.01);">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-8 mx-auto text-center">
+            <h2 class="text-white">Best Selling Laptops</h2>
+            <p class="text-muted">Top-tier high demand laptops chosen by students, businesses, and gaming enthusiasts.</p>
+            <div class="mx-auto bg-electric" style="width: 60px; height: 3px; border-radius: 2px;"></div>
+          </div>
+        </div>
+        
+        <!-- Grid dynamically loaded via JS -->
+        <div class="row" id="best-selling-laptops-grid">
+          <!-- Fallback or dynamic content loading -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Accessories Collection Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-8 mx-auto text-center">
+            <h2 class="text-white">Accessories Collection</h2>
+            <p class="text-muted">Premium computer additions from mechanical keyboards to ultra-secure backpacks.</p>
+            <div class="mx-auto bg-electric" style="width: 60px; height: 3px; border-radius: 2px;"></div>
+          </div>
+        </div>
+        
+        <!-- Grid dynamically loaded via JS -->
+        <div class="row" id="accessories-row-grid">
+          <!-- Fallback or dynamic content loading -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Top Brands Section -->
+    <section class="py-5" style="background-color: rgba(255, 255, 255, 0.01);">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-md-8 mx-auto text-center">
+            <h5 class="text-uppercase text-electric fw-bold" style="letter-spacing: 2px;">Shop By Brand</h5>
+            <h2 class="text-white">Official Brand Partners</h2>
+            <div class="mx-auto bg-electric" style="width: 60px; height: 3px; border-radius: 2px;"></div>
+          </div>
+        </div>
+        
+        <div class="row g-3 justify-content-center mt-3">
+          <div class="col-4 col-md-2">
+            <a href="products.html?brand=dell" class="brand-item">
+              <img src="assets/images/brands/dell.svg" alt="Dell Logo">
+            </a>
+          </div>
+          <div class="col-4 col-md-2">
+            <a href="products.html?brand=hp" class="brand-item">
+              <img src="assets/images/brands/hp.svg" alt="HP Logo">
+            </a>
+          </div>
+          <div class="col-4 col-md-2">
+            <a href="products.html?brand=lenovo" class="brand-item">
+              <img src="assets/images/brands/lenovo.svg" alt="Lenovo Logo">
+            </a>
+          </div>
+          <div class="col-4 col-md-2">
+            <a href="products.html?brand=asus" class="brand-item">
+              <img src="assets/images/brands/asus.svg" alt="Asus Logo">
+            </a>
+          </div>
+          <div class="col-4 col-md-2">
+            <a href="products.html?brand=acer" class="brand-item">
+              <img src="assets/images/brands/acer.svg" alt="Acer Logo">
+            </a>
+          </div>
+          <div class="col-4 col-md-2">
+            <a href="products.html?brand=msi" class="brand-item">
+              <img src="assets/images/brands/msi.svg" alt="MSI Logo">
+            </a>
+          </div>
+          <div class="col-4 col-md-2">
+            <a href="products.html?brand=apple" class="brand-item">
+              <img src="assets/images/brands/apple.svg" alt="Apple Logo">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Why Choose Us Section -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-8 mx-auto text-center">
+            <h2 class="text-white">Why Shop With Tech Emporium?</h2>
+            <p class="text-muted">We prioritize your customer experience with top-tier warranties and reliable delivery services.</p>
+            <div class="mx-auto bg-electric" style="width: 60px; height: 3px; border-radius: 2px;"></div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <!-- Fast Delivery -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="why-card">
+              <i class="bi bi-truck why-icon"></i>
+              <h5 class="text-white">Fast Nationwide Delivery</h5>
+              <p class="text-muted small mb-0">Flat rate delivery of Rs. 250 across all major cities, or FREE shipping for orders above Rs. 10,000.</p>
+            </div>
+          </div>
+          <!-- Secure Payments -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="why-card">
+              <i class="bi bi-shield-lock why-icon"></i>
+              <h5 class="text-white">Secure Payments</h5>
+              <p class="text-muted small mb-0">We accept Cash on Delivery, Bank Transfer, Easypaisa, and JazzCash with full verification guarantees.</p>
+            </div>
+          </div>
+          <!-- Official Warranty -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="why-card">
+              <i class="bi bi-patch-check why-icon"></i>
+              <h5 class="text-white">Official Brand Warranty</h5>
+              <p class="text-muted small mb-0">All laptops and components come with official local or international replacement warranties.</p>
+            </div>
+          </div>
+          <!-- Premium Quality Products -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="why-card">
+              <i class="bi bi-award why-icon"></i>
+              <h5 class="text-white">Premium Quality</h5>
+              <p class="text-muted small mb-0">100% genuine products directly sourced from verified factory supply chains and brand distributors.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Customer Testimonials Section -->
+    <section class="py-5" style="background-color: rgba(255, 255, 255, 0.01);">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-8 mx-auto text-center">
+            <h2 class="text-white">What Our Customers Say</h2>
+            <p class="text-muted">Read feedback from tech professionals, gamers, and students across Pakistan.</p>
+            <div class="mx-auto bg-electric" style="width: 60px; height: 3px; border-radius: 2px;"></div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <!-- Testimonial 1 -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "Bought an ASUS ROG Strix from Tech Emporium and the gaming performance is out of this world! Safe packaging and fast shipping to Karachi. Will purchase again."
+              </p>
+              <div class="testimonial-user">
+                <img src="assets/images/testimonials/user1.svg" alt="Zain Ahmed">
+                <div>
+                  <h6 class="testimonial-name">Zain Ahmed</h6>
+                  <div class="testimonial-stars">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 2 -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "ThinkPad X1 Carbon is the best laptop for my corporate duties. Official local warranty verified on lenovo portal. Exceptional support service by team!"
+              </p>
+              <div class="testimonial-user">
+                <img src="assets/images/testimonials/user2.svg" alt="Hina Malik">
+                <div>
+                  <h6 class="testimonial-name">Hina Malik</h6>
+                  <div class="testimonial-stars">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 3 -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "Ordered a Samsung 1TB SSD. Got it delivered in Lahore within 24 hours. The drive reads at maximum speed. Incredible, authentic service!"
+              </p>
+              <div class="testimonial-user">
+                <img src="assets/images/testimonials/user3.svg" alt="Asad Naeem">
+                <div>
+                  <h6 class="testimonial-name">Asad Naeem</h6>
+                  <div class="testimonial-stars">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 4 -->
+          <div class="col-md-6 col-lg-3 mb-4">
+            <div class="testimonial-card">
+              <p class="testimonial-text">
+                "Great experience buying the HP Pavilion Plus. Excellent budget friendly pricing in PKR compared to standard offline markets. Fast secure COD service."
+              </p>
+              <div class="testimonial-user">
+                <img src="assets/images/testimonials/user4.svg" alt="Sana Yasmin">
+                <div>
+                  <h6 class="testimonial-name">Sana Yasmin</h6>
+                  <div class="testimonial-stars">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 9. Newsletter + Footer -->
+  <section class="newsletter-section py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <h3 class="text-white mb-2"><i class="bi bi-envelope-paper me-2 text-electric"></i>Subscribe to Our Newsletter</h3>
+          <p class="text-muted mb-0 small">Get updates on new laptop arrivals, hardware sales, and special tech discounts in Pakistan.</p>
+        </div>
+        <div class="col-lg-6">
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!')">
+            <div class="input-group">
+              <input type="email" required class="form-control" placeholder="Enter your email address" aria-label="Email Address">
+              <button class="btn btn-electric" type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="pt-5 pb-3">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <!-- Brand Info -->
+        <div class="col-lg-4 col-md-6">
+          <a class="navbar-brand d-flex align-items-center gap-2 text-white mb-3" href="index.html">
+            <i class="bi bi-cpu text-electric" style="font-size: 1.8rem;"></i>
+            <span>TECH <span class="text-electric">EMPORIUM</span></span>
+          </a>
+          <p class="small text-muted mb-4">
+            Tech Emporium is the premium destination for computer hardware, laptops, and custom gaming gear. We deliver excellence with verified warranties and direct support.
+          </p>
+          <div>
+            <a href="https://facebook.com" class="footer-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://instagram.com" class="footer-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://twitter.com" class="footer-social-link" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+            <a href="https://linkedin.com" class="footer-social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6">
+          <h5 class="text-white mb-3">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="small">Home</a></li>
+            <li class="mb-2"><a href="products.html" class="small">Shop Catalog</a></li>
+            <li class="mb-2"><a href="about.html" class="small">About Us</a></li>
+            <li class="mb-2"><a href="contact.html" class="small">Contact Support</a></li>
+            <li class="mb-2"><a href="faq.html" class="small">Help FAQ</a></li>
+          </ul>
+        </div>
+        
+        <!-- Categories -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-white mb-3">Categories</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="products.html?category=gaming" class="small">Gaming Laptops</a></li>
+            <li class="mb-2"><a href="products.html?category=business" class="small">Business Laptops</a></li>
+            <li class="mb-2"><a href="products.html?category=student" class="small">Student Laptops</a></li>
+            <li class="mb-2"><a href="products.html?category=monitors" class="small">Monitors</a></li>
+            <li class="mb-2"><a href="products.html?category=accessories" class="small">Computer Accessories</a></li>
+          </ul>
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-white mb-3">Contact Information</h5>
+          <ul class="list-unstyled small">
+            <li class="d-flex align-items-start gap-2 mb-3">
+              <i class="bi bi-geo-alt-fill text-electric mt-1"></i>
+              <span>Plot 56B, Sector 23, Korangi Industrial Area, Karachi, Pakistan</span>
+            </li>
+            <li class="d-flex align-items-center gap-2 mb-3">
+              <i class="bi bi-telephone-fill text-electric"></i>
+              <span>+92 (21) 111-832-436</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-envelope-fill text-electric"></i>
+              <span>sales@techemporium.com.pk</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="border-secondary mb-3">
+      
+      <div class="d-flex flex-wrap justify-content-between align-items-center small text-muted">
+        <p class="mb-0">&copy; 2026 Tech Emporium. All Rights Reserved. Designed with premium aesthetics.</p>
+        <div class="d-flex gap-3 mt-2 mt-md-0">
+          <a href="faq.html">Privacy Policy</a>
+          <span>&middot;</span>
+          <a href="faq.html">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="btn-back-to-top" class="back-to-top" aria-label="Back to Top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- JS Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

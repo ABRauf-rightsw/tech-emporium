@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Settings | Tech Emporium Admin</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin-style.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div id="admin-wrapper">
+    <!-- Sidebar -->
+    <aside id="admin-sidebar">
+      <div class="sidebar-brand">
+        <a class="d-flex align-items-center gap-2 text-white" href="dashboard.html">
+          <i class="bi bi-cpu text-primary fs-4"></i>
+          <span>TECH <span class="text-primary">EMPORIUM</span></span>
+        </a>
+      </div>
+      
+      <div class="sidebar-menu">
+        <div class="menu-label">Main Menu</div>
+        <a href="dashboard.html" class="menu-item">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard</span>
+        </a>
+        
+        <div class="menu-label mt-4">Catalog</div>
+        <a href="products.html" class="menu-item">
+          <i class="bi bi-box-seam"></i>
+          <span>Products</span>
+        </a>
+        <a href="categories.html" class="menu-item">
+          <i class="bi bi-grid"></i>
+          <span>Categories</span>
+        </a>
+        <a href="brands.html" class="menu-item">
+          <i class="bi bi-award"></i>
+          <span>Brands</span>
+        </a>
+        <a href="inventory.html" class="menu-item">
+          <i class="bi bi-journal-text"></i>
+          <span>Inventory</span>
+        </a>
+        
+        <div class="menu-label mt-4">Sales &amp; Customers</div>
+        <a href="orders.html" class="menu-item">
+          <i class="bi bi-cart3"></i>
+          <span>Orders</span>
+        </a>
+        <a href="customers.html" class="menu-item">
+          <i class="bi bi-people"></i>
+          <span>Customers</span>
+        </a>
+        <a href="sellers.html" class="menu-item">
+          <i class="bi bi-shop"></i>
+          <span>Sellers</span>
+        </a>
+
+        <div class="menu-label mt-4">Marketing &amp; Reviews</div>
+        <a href="reviews.html" class="menu-item">
+          <i class="bi bi-star"></i>
+          <span>Reviews</span>
+        </a>
+        <a href="coupons.html" class="menu-item">
+          <i class="bi bi-percent"></i>
+          <span>Coupons</span>
+        </a>
+        <a href="banners.html" class="menu-item">
+          <i class="bi bi-image"></i>
+          <span>Banners</span>
+        </a>
+
+        <div class="menu-label mt-4">Management</div>
+        <a href="reports.html" class="menu-item">
+          <i class="bi bi-bar-chart"></i>
+          <span>Reports</span>
+        </a>
+        <a href="settings.html" class="menu-item">
+          <i class="bi bi-gear"></i>
+          <span>Settings</span>
+        </a>
+        <a href="profile.html" class="menu-item">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="menu-item text-danger w-100 border-0 bg-transparent">
+          <i class="bi bi-box-arrow-right text-danger"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <div id="admin-content">
+      <!-- Header -->
+      <header id="admin-header">
+        <div class="d-flex align-items-center gap-3">
+          <button class="header-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="bi bi-justify"></i>
+          </button>
+          <span class="text-muted small">System Configurations Panel</span>
+        </div>
+
+        <div class="header-actions">
+          <!-- User Profile Dropdown -->
+          <div class="dropdown profile-dropdown">
+            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Admin Avatar" class="profile-avatar" id="headerAdminAvatar">
+              <div class="profile-info d-none d-lg-block">
+                <span class="profile-name" id="headerAdminName">Zain Ahmed</span>
+                <span class="profile-role">Super Admin</span>
+              </div>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> My Profile</a></li>
+              <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear"></i> Store Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <main class="content-body">
+        <div class="page-title-box">
+          <h1 class="page-title">Store Configuration Settings</h1>
+          <p class="text-muted small mb-0">Update e-commerce profiles metadata, delivery charge caps, and enable payment methods.</p>
+        </div>
+
+        <form id="settingsForm" class="needs-validation" novalidate>
+          <div class="row g-4">
+            <!-- Left Side main configuration -->
+            <div class="col-lg-8">
+              <!-- Store Settings -->
+              <div class="card-custom mb-4">
+                <div class="card-header-custom">
+                  <h5 class="card-title-custom">1. Store Profile Settings</h5>
+                </div>
+                <div class="card-body-custom">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="setStoreName" class="form-label fw-semibold">Store Brand Name <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="setStoreName" required>
+                      <div class="invalid-feedback">Required.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="setStoreEmail" class="form-label fw-semibold">Store Support Email <span class="text-danger">*</span></label>
+                      <input type="email" class="form-control" id="setStoreEmail" required>
+                      <div class="invalid-feedback">Input valid email.</div>
+                    </div>
+                    <div class="col-md-12">
+                      <label for="setStorePhone" class="form-label fw-semibold">Contact Phone Line</label>
+                      <input type="text" class="form-control" id="setStorePhone">
+                    </div>
+                    <div class="col-md-12">
+                      <label for="setStoreAddress" class="form-label fw-semibold">Warehouse / Office Physical Address</label>
+                      <textarea class="form-control" id="setStoreAddress" rows="3"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Shipping settings -->
+              <div class="card-custom">
+                <div class="card-header-custom">
+                  <h5 class="card-title-custom">2. Delivery &amp; Logistics Shipping Settings</h5>
+                </div>
+                <div class="card-body-custom">
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="setShipCharges" class="form-label fw-semibold">Standard Flat Rate Fee (PKR) <span class="text-danger">*</span></label>
+                      <input type="number" class="form-control" id="setShipCharges" min="0" required>
+                      <div class="invalid-feedback">Required.</div>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="setFreeShipLimit" class="form-label fw-semibold">Free Shipping Limit Cap (PKR) <span class="text-danger">*</span></label>
+                      <input type="number" class="form-control" id="setFreeShipLimit" min="0" required>
+                      <div class="invalid-feedback">Required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column toggles -->
+            <div class="col-lg-4">
+              <!-- Payment gate switches -->
+              <div class="card-custom mb-4">
+                <div class="card-header-custom">
+                  <h5 class="card-title-custom">3. Payment Gateways</h5>
+                </div>
+                <div class="card-body-custom">
+                  <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="gateEasypaisa">
+                    <label class="form-check-label fw-semibold text-dark" for="gateEasypaisa">Easypaisa Channel</label>
+                  </div>
+                  <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="gateJazzcash">
+                    <label class="form-check-label fw-semibold text-dark" for="gateJazzcash">JazzCash Channel</label>
+                  </div>
+                  <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="gateBank">
+                    <label class="form-check-label fw-semibold text-dark" for="gateBank">Direct Bank Wire</label>
+                  </div>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="gateCod">
+                    <label class="form-check-label fw-semibold text-dark" for="gateCod">Cash On Delivery (COD)</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- General Settings -->
+              <div class="card-custom">
+                <div class="card-header-custom">
+                  <h5 class="card-title-custom">4. General Settings</h5>
+                </div>
+                <div class="card-body-custom">
+                  <div class="mb-3">
+                    <label for="setCurrency" class="form-label fw-semibold">Default Currency</label>
+                    <select class="form-select" id="setCurrency" disabled>
+                      <option value="PKR">PKR (Pakistani Rupee)</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="setTimezone" class="form-label fw-semibold">Local Timezone</label>
+                    <select class="form-select" id="setTimezone">
+                      <option value="Asia/Karachi">Asia/Karachi (GMT+5)</option>
+                      <option value="UTC">Coordinated Universal Time (UTC)</option>
+                    </select>
+                  </div>
+                  <div class="mb-0">
+                    <label for="setStatus" class="form-label fw-semibold">Store Live Status</label>
+                    <select class="form-select" id="setStatus">
+                      <option value="Active">Active / Public</option>
+                      <option value="Maintenance">Maintenance Mode</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Save Buttons -->
+              <button type="submit" class="btn btn-custom-primary w-100 py-2 mt-4"><i class="bi bi-save me-1"></i> Save Configuration</button>
+            </div>
+          </div>
+        </form>
+      </main>
+
+      <!-- Footer -->
+      <footer class="admin-footer text-center">
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+          <p class="mb-0">&copy; 2026 Tech Emporium. Admin Dashboard Panel.</p>
+          <p class="mb-0">Powered by Bootstrap 5 &amp; Vanilla JS.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    let settings = {};
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Load Profile Info
+      const profileObj = db.get("profile", DEFAULT_ADMIN);
+      document.getElementById("headerAdminName").textContent = profileObj.name;
+
+      settings = db.get("settings", DEFAULT_SETTINGS);
+
+      // Populate Inputs
+      document.getElementById("setStoreName").value = settings.storeName;
+      document.getElementById("setStoreEmail").value = settings.storeEmail;
+      document.getElementById("setStorePhone").value = settings.phone;
+      document.getElementById("setStoreAddress").value = settings.address;
+      document.getElementById("setShipCharges").value = settings.shippingCharges;
+      document.getElementById("setFreeShipLimit").value = settings.freeShippingLimit;
+      
+      document.getElementById("gateEasypaisa").checked = settings.easypaisaActive;
+      document.getElementById("gateJazzcash").checked = settings.jazzcashActive;
+      document.getElementById("gateBank").checked = settings.bankActive;
+      document.getElementById("gateCod").checked = settings.codActive;
+
+      document.getElementById("setTimezone").value = settings.timezone;
+      document.getElementById("setStatus").value = settings.storeStatus;
+
+      // Form Submit
+      const form = document.getElementById("settingsForm");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.classList.add("was-validated");
+          return;
+        }
+
+        // Save
+        settings.storeName = document.getElementById("setStoreName").value.trim();
+        settings.storeEmail = document.getElementById("setStoreEmail").value.trim();
+        settings.phone = document.getElementById("setStorePhone").value.trim();
+        settings.address = document.getElementById("setStoreAddress").value.trim();
+        settings.shippingCharges = parseFloat(document.getElementById("setShipCharges").value);
+        settings.freeShippingLimit = parseFloat(document.getElementById("setFreeShipLimit").value);
+
+        settings.easypaisaActive = document.getElementById("gateEasypaisa").checked;
+        settings.jazzcashActive = document.getElementById("gateJazzcash").checked;
+        settings.bankActive = document.getElementById("gateBank").checked;
+        settings.codActive = document.getElementById("gateCod").checked;
+
+        settings.timezone = document.getElementById("setTimezone").value;
+        settings.storeStatus = document.getElementById("setStatus").value;
+
+        db.save("settings", settings);
+        alert("Store settings saved successfully!");
+      });
+    });
+  </script>
+</body>
+</html>

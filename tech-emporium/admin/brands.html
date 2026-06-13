@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brands Management | Tech Emporium Admin</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin-style.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div id="admin-wrapper">
+    <!-- Sidebar -->
+    <aside id="admin-sidebar">
+      <div class="sidebar-brand">
+        <a class="d-flex align-items-center gap-2 text-white" href="dashboard.html">
+          <i class="bi bi-cpu text-primary fs-4"></i>
+          <span>TECH <span class="text-primary">EMPORIUM</span></span>
+        </a>
+      </div>
+      
+      <div class="sidebar-menu">
+        <div class="menu-label">Main Menu</div>
+        <a href="dashboard.html" class="menu-item">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard</span>
+        </a>
+        
+        <div class="menu-label mt-4">Catalog</div>
+        <a href="products.html" class="menu-item">
+          <i class="bi bi-box-seam"></i>
+          <span>Products</span>
+        </a>
+        <a href="categories.html" class="menu-item">
+          <i class="bi bi-grid"></i>
+          <span>Categories</span>
+        </a>
+        <a href="brands.html" class="menu-item">
+          <i class="bi bi-award"></i>
+          <span>Brands</span>
+        </a>
+        <a href="inventory.html" class="menu-item">
+          <i class="bi bi-journal-text"></i>
+          <span>Inventory</span>
+        </a>
+        
+        <div class="menu-label mt-4">Sales &amp; Customers</div>
+        <a href="orders.html" class="menu-item">
+          <i class="bi bi-cart3"></i>
+          <span>Orders</span>
+        </a>
+        <a href="customers.html" class="menu-item">
+          <i class="bi bi-people"></i>
+          <span>Customers</span>
+        </a>
+        <a href="sellers.html" class="menu-item">
+          <i class="bi bi-shop"></i>
+          <span>Sellers</span>
+        </a>
+
+        <div class="menu-label mt-4">Marketing &amp; Reviews</div>
+        <a href="reviews.html" class="menu-item">
+          <i class="bi bi-star"></i>
+          <span>Reviews</span>
+        </a>
+        <a href="coupons.html" class="menu-item">
+          <i class="bi bi-percent"></i>
+          <span>Coupons</span>
+        </a>
+        <a href="banners.html" class="menu-item">
+          <i class="bi bi-image"></i>
+          <span>Banners</span>
+        </a>
+
+        <div class="menu-label mt-4">Management</div>
+        <a href="reports.html" class="menu-item">
+          <i class="bi bi-bar-chart"></i>
+          <span>Reports</span>
+        </a>
+        <a href="settings.html" class="menu-item">
+          <i class="bi bi-gear"></i>
+          <span>Settings</span>
+        </a>
+        <a href="profile.html" class="menu-item">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="menu-item text-danger w-100 border-0 bg-transparent">
+          <i class="bi bi-box-arrow-right text-danger"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <div id="admin-content">
+      <!-- Header -->
+      <header id="admin-header">
+        <div class="d-flex align-items-center gap-3">
+          <button class="header-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="bi bi-justify"></i>
+          </button>
+          <span class="text-muted small">Official Brands Panel</span>
+        </div>
+
+        <div class="header-actions">
+          <!-- User Profile Dropdown -->
+          <div class="dropdown profile-dropdown">
+            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Admin Avatar" class="profile-avatar" id="headerAdminAvatar">
+              <div class="profile-info d-none d-lg-block">
+                <span class="profile-name" id="headerAdminName">Zain Ahmed</span>
+                <span class="profile-role">Super Admin</span>
+              </div>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> My Profile</a></li>
+              <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear"></i> Store Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <main class="content-body">
+        <div class="page-title-box d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <h1 class="page-title">Brands Management</h1>
+            <p class="text-muted small mb-0">Manage official manufacturer brands partnering with Tech Emporium.</p>
+          </div>
+          <button class="btn btn-custom-primary" data-bs-toggle="modal" data-bs-target="#brandModal" onclick="prepareAdd()"><i class="bi bi-plus-lg me-1"></i> Add Brand</button>
+        </div>
+
+        <!-- Brands table card -->
+        <div class="card-custom">
+          <div class="card-body-custom p-0">
+            <div class="table-responsive">
+              <table class="table table-custom align-middle">
+                <thead>
+                  <tr>
+                    <th>Brand Logo</th>
+                    <th>Brand Name</th>
+                    <th>Catalog Count</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="brandsTableBody">
+                  <!-- Loaded via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="admin-footer text-center">
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+          <p class="mb-0">&copy; 2026 Tech Emporium. Admin Dashboard Panel.</p>
+          <p class="mb-0">Powered by Bootstrap 5 &amp; Vanilla JS.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Brand Modal (Add / Edit) -->
+  <div class="modal fade" id="brandModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header">
+          <h5 class="fw-bold m-0" id="modalTitle">Add Brand</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="brandForm" class="needs-validation" novalidate>
+          <div class="modal-body p-4">
+            <input type="hidden" id="brandId">
+            <div class="mb-3">
+              <label for="brandName" class="form-label fw-semibold">Brand Name <span class="text-danger">*</span></label>
+              <input type="text" class="form-control" id="brandName" placeholder="e.g. Asus" required>
+              <div class="invalid-feedback">Brand name is required.</div>
+            </div>
+            <div class="mb-3">
+              <label for="brandStatus" class="form-label fw-semibold">Status</label>
+              <select class="form-select" id="brandStatus">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+              </select>
+            </div>
+            <div class="mb-0">
+              <label for="brandLogo" class="form-label fw-semibold">Brand Logo Reference</label>
+              <select class="form-select" id="brandLogo">
+                <option value="dell.svg">Dell Logo SVG</option>
+                <option value="hp.svg">HP Logo SVG</option>
+                <option value="lenovo.svg">Lenovo Logo SVG</option>
+                <option value="asus.svg">Asus Logo SVG</option>
+                <option value="acer.svg">Acer Logo SVG</option>
+                <option value="msi.svg">MSI Logo SVG</option>
+                <option value="apple.svg">Apple Logo SVG</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer bg-light">
+            <button type="button" class="btn btn-custom-outline px-4" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-custom-primary px-4">Save Brand</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    let brands = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Load Profile Info
+      const profileObj = db.get("profile", DEFAULT_ADMIN);
+      document.getElementById("headerAdminName").textContent = profileObj.name;
+
+      renderBrands();
+
+      const form = document.getElementById("brandForm");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.classList.add("was-validated");
+          return;
+        }
+
+        brands = db.get("brands", DEFAULT_BRANDS);
+        const brandIdInput = document.getElementById("brandId").value;
+
+        if (brandIdInput) {
+          // Edit
+          const b = brands.find(brand => brand.id === parseInt(brandIdInput));
+          if (b) {
+            b.name = document.getElementById("brandName").value.trim();
+            b.status = document.getElementById("brandStatus").value;
+            b.logo = document.getElementById("brandLogo").value;
+          }
+          Toast.show("Brand updated successfully!", "success");
+        } else {
+          // Add
+          const maxId = brands.reduce((max, b) => b.id > max ? b.id : max, 0);
+          const newBrand = {
+            id: maxId + 1,
+            name: document.getElementById("brandName").value.trim(),
+            status: document.getElementById("brandStatus").value,
+            logo: document.getElementById("brandLogo").value,
+            productCount: 0
+          };
+          brands.push(newBrand);
+          Toast.show("Brand added to list!", "success");
+        }
+
+        db.save("brands", brands);
+        bootstrap.Modal.getInstance(document.getElementById("brandModal")).hide();
+        renderBrands();
+        form.reset();
+        form.classList.remove("was-validated");
+      });
+    });
+
+    function renderBrands() {
+      brands = db.get("brands", DEFAULT_BRANDS);
+      const products = db.get("products", DEFAULT_PRODUCTS);
+
+      let html = "";
+      brands.forEach(b => {
+        // Compute count dynamically
+        const pCount = products.filter(p => p.brand.toLowerCase() === b.name.toLowerCase()).length;
+        b.productCount = pCount;
+
+        const badgeClass = b.status === "Active" ? "badge-success-custom" : "badge-danger-custom";
+        const logoPath = `../assets/images/brands/${b.logo}`;
+
+        html += `
+          <tr>
+            <td>
+              <div class="bg-light p-2 rounded d-flex align-items-center justify-content-center" style="width: 70px; height: 44px; border: 1px solid #f1f5f9;">
+                <img src="${logoPath}" alt="${b.name}" class="img-fluid" style="max-height: 28px;">
+              </div>
+            </td>
+            <td>
+              <div class="fw-bold text-dark">${b.name}</div>
+            </td>
+            <td class="fw-semibold text-dark">${b.productCount} items</td>
+            <td><span class="badge-custom ${badgeClass}">${b.status}</span></td>
+            <td>
+              <div class="d-flex gap-1">
+                <button onclick="editBrand(${b.id})" class="btn-action-custom" title="Edit Brand"><i class="bi bi-pencil"></i></button>
+                <button onclick="deleteBrand(${b.id})" class="btn-action-custom btn-action-delete" title="Delete Brand"><i class="bi bi-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+        `;
+      });
+      document.getElementById("brandsTableBody").innerHTML = html;
+      db.save("brands", brands);
+    }
+
+    function prepareAdd() {
+      document.getElementById("modalTitle").textContent = "Add Brand";
+      document.getElementById("brandId").value = "";
+      document.getElementById("brandForm").reset();
+      document.getElementById("brandForm").classList.remove("was-validated");
+    }
+
+    function editBrand(id) {
+      const b = brands.find(brand => brand.id === id);
+      if (!b) return;
+
+      document.getElementById("modalTitle").textContent = "Edit Brand";
+      document.getElementById("brandId").value = b.id;
+      document.getElementById("brandName").value = b.name;
+      document.getElementById("brandStatus").value = b.status;
+      document.getElementById("brandLogo").value = b.logo;
+
+      const modal = new bootstrap.Modal(document.getElementById("brandModal"));
+      modal.show();
+    }
+
+    function deleteBrand(id) {
+      if (confirm("Are you sure you want to delete this brand partner?")) {
+        brands = brands.filter(b => b.id !== id);
+        db.save("brands", brands);
+        Toast.show("Brand removed from database", "danger");
+        renderBrands();
+      }
+    }
+  </script>
+</body>
+</html>

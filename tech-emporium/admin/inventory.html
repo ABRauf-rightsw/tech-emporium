@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Management | Tech Emporium Admin</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin-style.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div id="admin-wrapper">
+    <!-- Sidebar -->
+    <aside id="admin-sidebar">
+      <div class="sidebar-brand">
+        <a class="d-flex align-items-center gap-2 text-white" href="dashboard.html">
+          <i class="bi bi-cpu text-primary fs-4"></i>
+          <span>TECH <span class="text-primary">EMPORIUM</span></span>
+        </a>
+      </div>
+      
+      <div class="sidebar-menu">
+        <div class="menu-label">Main Menu</div>
+        <a href="dashboard.html" class="menu-item">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard</span>
+        </a>
+        
+        <div class="menu-label mt-4">Catalog</div>
+        <a href="products.html" class="menu-item">
+          <i class="bi bi-box-seam"></i>
+          <span>Products</span>
+        </a>
+        <a href="categories.html" class="menu-item">
+          <i class="bi bi-grid"></i>
+          <span>Categories</span>
+        </a>
+        <a href="brands.html" class="menu-item">
+          <i class="bi bi-award"></i>
+          <span>Brands</span>
+        </a>
+        <a href="inventory.html" class="menu-item">
+          <i class="bi bi-journal-text"></i>
+          <span>Inventory</span>
+        </a>
+        
+        <div class="menu-label mt-4">Sales &amp; Customers</div>
+        <a href="orders.html" class="menu-item">
+          <i class="bi bi-cart3"></i>
+          <span>Orders</span>
+        </a>
+        <a href="customers.html" class="menu-item">
+          <i class="bi bi-people"></i>
+          <span>Customers</span>
+        </a>
+        <a href="sellers.html" class="menu-item">
+          <i class="bi bi-shop"></i>
+          <span>Sellers</span>
+        </a>
+
+        <div class="menu-label mt-4">Marketing &amp; Reviews</div>
+        <a href="reviews.html" class="menu-item">
+          <i class="bi bi-star"></i>
+          <span>Reviews</span>
+        </a>
+        <a href="coupons.html" class="menu-item">
+          <i class="bi bi-percent"></i>
+          <span>Coupons</span>
+        </a>
+        <a href="banners.html" class="menu-item">
+          <i class="bi bi-image"></i>
+          <span>Banners</span>
+        </a>
+
+        <div class="menu-label mt-4">Management</div>
+        <a href="reports.html" class="menu-item">
+          <i class="bi bi-bar-chart"></i>
+          <span>Reports</span>
+        </a>
+        <a href="settings.html" class="menu-item">
+          <i class="bi bi-gear"></i>
+          <span>Settings</span>
+        </a>
+        <a href="profile.html" class="menu-item">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="menu-item text-danger w-100 border-0 bg-transparent">
+          <i class="bi bi-box-arrow-right text-danger"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <div id="admin-content">
+      <!-- Header -->
+      <header id="admin-header">
+        <div class="d-flex align-items-center gap-3">
+          <button class="header-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="bi bi-justify"></i>
+          </button>
+          <span class="text-muted small">Warehouse Inventory Monitor</span>
+        </div>
+
+        <div class="header-actions">
+          <!-- User Profile Dropdown -->
+          <div class="dropdown profile-dropdown">
+            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Admin Avatar" class="profile-avatar" id="headerAdminAvatar">
+              <div class="profile-info d-none d-lg-block">
+                <span class="profile-name" id="headerAdminName">Zain Ahmed</span>
+                <span class="profile-role">Super Admin</span>
+              </div>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> My Profile</a></li>
+              <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear"></i> Store Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <main class="content-body">
+        <div class="page-title-box d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <h1 class="page-title">Inventory Management</h1>
+            <p class="text-muted small mb-0">Track warehouse stock quantities, low stock statuses, and re-order limits.</p>
+          </div>
+          <button class="btn btn-custom-primary" onclick="window.location.reload()"><i class="bi bi-arrow-clockwise me-1"></i> Refresh Stock Levels</button>
+        </div>
+
+        <!-- Inventory Summary Cards -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Total Items Listed</p>
+                <h3 id="invTotalItems">0</h3>
+                <span class="small text-muted">SKU Catalog</span>
+              </div>
+              <div class="stat-icon bg-primary-light text-primary">
+                <i class="bi bi-upc-scan"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Total Stock Units</p>
+                <h3 id="invTotalStock">0</h3>
+                <span class="small text-muted">Warehouse Quantity</span>
+              </div>
+              <div class="stat-icon bg-success-light text-success">
+                <i class="bi bi-boxes"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Low Stock Items</p>
+                <h3 id="invLowStock">0</h3>
+                <span class="small text-danger">Stock &lt; 5 units</span>
+              </div>
+              <div class="stat-icon bg-warning-light text-warning">
+                <i class="bi bi-exclamation-triangle"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Out of Stock Items</p>
+                <h3 id="invOutStock">0</h3>
+                <span class="small text-danger">Requires immediate order</span>
+              </div>
+              <div class="stat-icon bg-danger-light text-danger">
+                <i class="bi bi-x-octagon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search / Filter Card -->
+        <div class="card-custom mb-4">
+          <div class="card-body-custom">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="invSearch" placeholder="Search product name or SKU to adjust stock...">
+              </div>
+              <div class="col-md-3">
+                <select class="form-select" id="invFilterStock">
+                  <option value="">All Stock Statuses</option>
+                  <option value="InStock">In Stock (5+)</option>
+                  <option value="Low">Low Stock (&lt; 5)</option>
+                  <option value="Out">Out of Stock (0)</option>
+                </select>
+              </div>
+              <div class="col-md-3 text-end">
+                <span class="text-muted small align-middle lh-lg" id="invFilteredCount">Showing 0 of 0 SKUs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inventory Table -->
+        <div class="card-custom">
+          <div class="card-body-custom p-0">
+            <div class="table-responsive">
+              <table class="table table-custom align-middle">
+                <thead>
+                  <tr>
+                    <th>SKU</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Current Stock</th>
+                    <th>Alert Status</th>
+                    <th>Last Synced</th>
+                    <th>Stock Adjustment</th>
+                  </tr>
+                </thead>
+                <tbody id="inventoryTableBody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="admin-footer text-center">
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+          <p class="mb-0">&copy; 2026 Tech Emporium. Admin Dashboard Panel.</p>
+          <p class="mb-0">Powered by Bootstrap 5 &amp; Vanilla JS.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    let products = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Load Profile Info
+      const profileObj = db.get("profile", DEFAULT_ADMIN);
+      document.getElementById("headerAdminName").textContent = profileObj.name;
+
+      products = db.get("products", DEFAULT_PRODUCTS);
+      
+      // Summaries calculation
+      computeSummary();
+      renderInventory();
+
+      // Bind input listeners
+      document.getElementById("invSearch").addEventListener("input", renderInventory);
+      document.getElementById("invFilterStock").addEventListener("change", renderInventory);
+    });
+
+    function computeSummary() {
+      const totalItems = products.length;
+      const totalStock = products.reduce((sum, p) => sum + p.stock, 0);
+      const lowStock = products.filter(p => p.stock > 0 && p.stock < 5).length;
+      const outStock = products.filter(p => p.stock === 0).length;
+
+      document.getElementById("invTotalItems").textContent = totalItems;
+      document.getElementById("invTotalStock").textContent = totalStock;
+      document.getElementById("invLowStock").textContent = lowStock;
+      document.getElementById("invOutStock").textContent = outStock;
+    }
+
+    function renderInventory() {
+      const search = document.getElementById("invSearch").value.toLowerCase();
+      const filterStock = document.getElementById("invFilterStock").value;
+
+      const filtered = products.filter(p => {
+        const matchesSearch = p.name.toLowerCase().includes(search) || p.sku.toLowerCase().includes(search);
+        
+        let matchesStock = true;
+        if (filterStock === "InStock") matchesStock = p.stock >= 5;
+        else if (filterStock === "Low") matchesStock = p.stock > 0 && p.stock < 5;
+        else if (filterStock === "Out") matchesStock = p.stock === 0;
+
+        return matchesSearch && matchesStock;
+      });
+
+      document.getElementById("invFilteredCount").textContent = `Showing ${filtered.length} of ${products.length} SKUs`;
+
+      let html = "";
+      filtered.forEach(p => {
+        let alertBadge = "";
+        let rowClass = "";
+        if (p.stock === 0) {
+          alertBadge = `<span class="badge-custom badge-danger-custom"><i class="bi bi-x-circle-fill me-1"></i> Out of Stock</span>`;
+          rowClass = "table-danger-subtle";
+        } else if (p.stock < 5) {
+          alertBadge = `<span class="badge-custom badge-warning-custom"><i class="bi bi-exclamation-triangle-fill me-1"></i> Low Stock</span>`;
+          rowClass = "table-warning-subtle";
+        } else {
+          alertBadge = `<span class="badge-custom badge-success-custom"><i class="bi bi-check-circle-fill me-1"></i> Healthy</span>`;
+        }
+
+        // Today's date mock
+        const syncDate = new Date().toLocaleDateString('en-PK', { year: 'numeric', month: 'short', day: 'numeric' });
+
+        html += `
+          <tr class="${rowClass}">
+            <td class="text-muted small fw-bold">${p.sku}</td>
+            <td><div class="fw-bold text-dark">${p.name}</div></td>
+            <td>${p.category}</td>
+            <td>
+              <span id="stock-val-${p.id}" class="fw-bold fs-6">${p.stock}</span>
+            </td>
+            <td>${alertBadge}</td>
+            <td class="text-muted small">${syncDate}</td>
+            <td>
+              <div class="input-group input-group-sm" style="max-width: 140px;">
+                <input type="number" id="input-adjust-${p.id}" class="form-control" value="${p.stock}" min="0">
+                <button onclick="updateQty(${p.id})" class="btn btn-custom-primary" type="button"><i class="bi bi-check-lg"></i></button>
+              </div>
+            </td>
+          </tr>
+        `;
+      });
+
+      document.getElementById("inventoryTableBody").innerHTML = html || `<tr><td colspan="7" class="text-center py-4 text-muted">No inventory listings matches query</td></tr>`;
+    }
+
+    function updateQty(id) {
+      const input = document.getElementById(`input-adjust-${id}`);
+      const val = parseInt(input.value);
+      if (isNaN(val) || val < 0) {
+        Toast.show("Please input a valid positive stock number", "danger");
+        return;
+      }
+
+      const p = products.find(prod => prod.id === id);
+      if (p) {
+        p.stock = val;
+        // Sync product status based on stock
+        if (p.stock === 0) p.status = "Inactive";
+        else p.status = "Active";
+
+        db.save("products", products);
+        Toast.show(`Stock level for ${p.name} adjusted to ${val}!`, "success");
+        computeSummary();
+        renderInventory();
+      }
+    }
+  </script>
+</body>
+</html>

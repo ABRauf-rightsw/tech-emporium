@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account | Tech Emporium</title>
+  <meta name="description" content="View your Tech Emporium customer profile, edit saved shipping locations, and check order statuses.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- Sticky Navbar Header -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark glass-nav fixed-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
+          <i class="bi bi-cpu text-electric" style="font-size: 1.8rem;"></i>
+          <span>TECH <span class="text-electric">EMPORIUM</span></span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="products.html">Shop Catalog</a></li>
+            <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-3">
+            <a href="wishlist.html" class="nav-icon-btn position-relative" aria-label="View Wishlist">
+              <i class="bi bi-heart"></i>
+              <span class="badge-counter wishlist-counter" style="display: none;">0</span>
+            </a>
+            <a href="cart.html" class="nav-icon-btn position-relative" aria-label="View Cart">
+              <i class="bi bi-cart"></i>
+              <span class="badge-counter cart-counter" style="display: none;">0</span>
+            </a>
+            <a href="my-account.html" class="nav-icon-btn active" aria-label="My Account"><i class="bi bi-person-circle"></i></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- My Account Area -->
+  <main style="margin-top: 100px;" class="mb-5">
+    <div class="container">
+      
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb small">
+          <li class="breadcrumb-item"><a href="index.html" class="text-electric">Home</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">My Account</li>
+        </ol>
+      </nav>
+
+      <h1 class="text-white mb-4">Customer Dashboard</h1>
+
+      <div class="row g-4">
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-3">
+          <div class="card glass-card p-3 border border-secondary">
+            <div class="text-center py-3 border-bottom border-secondary mb-3">
+              <i class="bi bi-person-bounding-box text-electric" style="font-size: 3.5rem;"></i>
+              <h5 class="text-white mt-2 mb-0">Muhammad Ali</h5>
+              <small class="text-muted">Member since June 2026</small>
+            </div>
+            
+            <ul class="nav flex-column nav-pills gap-1" id="accountTabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active w-100 text-start" id="dash-tab" data-bs-toggle="tab" data-bs-target="#dash-content" type="button" role="tab">
+                  <i class="bi bi-speedometer2 me-2"></i>Dashboard Overview
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link w-100 text-start" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-content" type="button" role="tab">
+                  <i class="bi bi-person-gear me-2"></i>Profile Settings
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link w-100 text-start" id="address-tab" data-bs-toggle="tab" data-bs-target="#address-content" type="button" role="tab">
+                  <i class="bi bi-geo-alt me-2"></i>Saved Addresses
+                </button>
+              </li>
+              <li class="nav-item">
+                <a href="orders.html" class="nav-link w-100 text-start">
+                  <i class="bi bi-bag-check me-2"></i>My Order Records
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="wishlist.html" class="nav-link w-100 text-start">
+                  <i class="bi bi-heart me-2"></i>My Wishlist
+                </a>
+              </li>
+              <li class="nav-item mt-3 border-top border-secondary pt-3">
+                <a href="login.html" class="btn btn-outline-danger w-100 rounded-pill py-2">
+                  <i class="bi bi-box-arrow-left me-2"></i>Log Out
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Main Account Content Panel -->
+        <section class="col-lg-9">
+          <div class="tab-content" id="accountTabsContent">
+            
+            <!-- Dashboard Overview Panel -->
+            <div class="tab-pane fade show active" id="dash-content" role="tabpanel">
+              <div class="row g-3">
+                <!-- Stats 1 -->
+                <div class="col-md-4">
+                  <div class="card glass-card p-4 border border-secondary text-center">
+                    <i class="bi bi-cart-check-fill text-electric mb-2" style="font-size: 2.5rem;"></i>
+                    <h3 class="text-white" id="dashboard-cart-count">0</h3>
+                    <p class="text-muted small mb-0">Items in Shopping Cart</p>
+                    <a href="cart.html" class="btn btn-sm btn-outline-custom mt-3">View Cart</a>
+                  </div>
+                </div>
+                <!-- Stats 2 -->
+                <div class="col-md-4">
+                  <div class="card glass-card p-4 border border-secondary text-center">
+                    <i class="bi bi-heart-fill text-danger mb-2" style="font-size: 2.5rem;"></i>
+                    <h3 class="text-white" id="dashboard-wishlist-count">0</h3>
+                    <p class="text-muted small mb-0">Saved Wishlist Items</p>
+                    <a href="wishlist.html" class="btn btn-sm btn-outline-custom mt-3">View Wishlist</a>
+                  </div>
+                </div>
+                <!-- Stats 3 -->
+                <div class="col-md-4">
+                  <div class="card glass-card p-4 border border-secondary text-center">
+                    <i class="bi bi-receipt-cutoff text-warning mb-2" style="font-size: 2.5rem;"></i>
+                    <h3 class="text-white" id="dashboard-orders-count">0</h3>
+                    <p class="text-muted small mb-0">Total Orders Placed</p>
+                    <a href="orders.html" class="btn btn-sm btn-outline-custom mt-3">View Orders</a>
+                  </div>
+                </div>
+
+                <!-- Welcome Text Details -->
+                <div class="col-md-12 mt-4">
+                  <div class="card glass-card p-4 border border-secondary">
+                    <h4 class="text-white mb-3">Hello, Muhammad Ali!</h4>
+                    <p class="text-muted">
+                      From your customer account dashboard, you can view your shopping statistics, modify your billing coordinates, update contact information, and audit simulated checkout order logs.
+                    </p>
+                    <div class="alert alert-secondary bg-dark border-secondary text-muted mb-0 small">
+                      <i class="bi bi-exclamation-triangle-fill text-warning me-1"></i>
+                      Need help regarding a past order? Reach out instantly at <strong>sales@techemporium.com.pk</strong> with your order reference ID.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Settings Panel -->
+            <div class="tab-pane fade" id="profile-content" role="tabpanel">
+              <div class="card glass-card p-4 border border-secondary">
+                <h4 class="text-white mb-3">Profile Information</h4>
+                <form id="profile-settings-form">
+                  <div class="row g-3">
+                    <div class="col-md-12">
+                      <label class="form-label text-muted small">Full Name</label>
+                      <input type="text" id="profile-name" class="form-control custom-input" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small">Email Address</label>
+                      <input type="email" id="profile-email" class="form-control custom-input" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small">Phone Number</label>
+                      <input type="text" id="profile-phone" class="form-control custom-input" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small">New Password (Leave blank to keep current)</label>
+                      <input type="password" class="form-control custom-input" placeholder="••••••••">
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label text-muted small">Confirm New Password</label>
+                      <input type="password" class="form-control custom-input" placeholder="••••••••">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-electric mt-4 px-4 py-2">
+                    Save Profile Settings
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Address Settings Panel -->
+            <div class="tab-pane fade" id="address-content" role="tabpanel">
+              <div class="card glass-card p-4 border border-secondary">
+                <h4 class="text-white mb-3">Default Billing &amp; Shipping Address</h4>
+                <form id="address-settings-form">
+                  <div class="row g-3">
+                    <div class="col-md-12">
+                      <label class="form-label text-muted small">Receiver Name</label>
+                      <input type="text" id="address-name" class="form-control custom-input" required>
+                    </div>
+                    <div class="col-md-12">
+                      <label class="form-label text-muted small">City</label>
+                      <input type="text" id="address-city" class="form-control custom-input" required>
+                    </div>
+                    <div class="col-md-12">
+                      <label class="form-label text-muted small">Detailed Address</label>
+                      <textarea id="address-value" class="form-control custom-input" rows="3" required></textarea>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-electric mt-4 px-4 py-2">
+                    Update Billing Address
+                  </button>
+                </form>
+                
+                <div class="border-top border-secondary mt-4 pt-4">
+                  <h5 class="text-white mb-3">Clear Account History</h5>
+                  <button class="btn btn-outline-danger" id="btn-clear-order-history">Clear Orders History</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="pt-5 pb-3">
+    <div class="container text-center">
+      <p class="small text-muted mb-0">&copy; 2026 Tech Emporium. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <button id="btn-back-to-top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

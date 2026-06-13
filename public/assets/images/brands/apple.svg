@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <g transform="translate(100, 30)">
+    <path d="M 4 -14 C 4 -8 0 -2 -6 2 C -2 8 4 12 8 12 C 12 12 14 10 18 10 C 22 10 24 12 28 12 C 32 12 36 8 38 4 C 28 0 26 -10 32 -18 C 28 -20 22 -18 18 -18 C 14 -18 12 -16 8 -16 C 4 -16 2 -18 -2 -18 C -6 -18 -10 -16 4 -14 Z" fill="#555555" transform="translate(-8, 2) scale(0.95)"/>
+    <path d="M 10 -20 C 12 -24 16 -26 20 -24 C 20 -20 16 -16 10 -20 Z" fill="#555555" transform="translate(-8, 2) scale(0.95)"/>
+  </g>
+</svg>

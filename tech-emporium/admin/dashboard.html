@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Overview | Tech Emporium Admin</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin-style.css">
+  <!-- Chart.js for statistics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div id="admin-wrapper">
+    <!-- Sidebar -->
+    <aside id="admin-sidebar">
+      <div class="sidebar-brand">
+        <a class="d-flex align-items-center gap-2 text-white" href="dashboard.html">
+          <i class="bi bi-cpu text-primary fs-4"></i>
+          <span>TECH <span class="text-primary">EMPORIUM</span></span>
+        </a>
+      </div>
+      
+      <div class="sidebar-menu">
+        <div class="menu-label">Main Menu</div>
+        <a href="dashboard.html" class="menu-item">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard</span>
+        </a>
+        
+        <div class="menu-label mt-4">Catalog</div>
+        <a href="products.html" class="menu-item">
+          <i class="bi bi-box-seam"></i>
+          <span>Products</span>
+        </a>
+        <a href="categories.html" class="menu-item">
+          <i class="bi bi-grid"></i>
+          <span>Categories</span>
+        </a>
+        <a href="brands.html" class="menu-item">
+          <i class="bi bi-award"></i>
+          <span>Brands</span>
+        </a>
+        <a href="inventory.html" class="menu-item">
+          <i class="bi bi-journal-text"></i>
+          <span>Inventory</span>
+        </a>
+        
+        <div class="menu-label mt-4">Sales &amp; Customers</div>
+        <a href="orders.html" class="menu-item">
+          <i class="bi bi-cart3"></i>
+          <span>Orders</span>
+        </a>
+        <a href="customers.html" class="menu-item">
+          <i class="bi bi-people"></i>
+          <span>Customers</span>
+        </a>
+        <a href="sellers.html" class="menu-item">
+          <i class="bi bi-shop"></i>
+          <span>Sellers</span>
+        </a>
+
+        <div class="menu-label mt-4">Marketing &amp; Reviews</div>
+        <a href="reviews.html" class="menu-item">
+          <i class="bi bi-star"></i>
+          <span>Reviews</span>
+        </a>
+        <a href="coupons.html" class="menu-item">
+          <i class="bi bi-percent"></i>
+          <span>Coupons</span>
+        </a>
+        <a href="banners.html" class="menu-item">
+          <i class="bi bi-image"></i>
+          <span>Banners</span>
+        </a>
+
+        <div class="menu-label mt-4">Management</div>
+        <a href="reports.html" class="menu-item">
+          <i class="bi bi-bar-chart"></i>
+          <span>Reports</span>
+        </a>
+        <a href="settings.html" class="menu-item">
+          <i class="bi bi-gear"></i>
+          <span>Settings</span>
+        </a>
+        <a href="profile.html" class="menu-item">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="menu-item text-danger w-100 border-0 bg-transparent">
+          <i class="bi bi-box-arrow-right text-danger"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <div id="admin-content">
+      <!-- Header -->
+      <header id="admin-header">
+        <div class="d-flex align-items-center gap-3">
+          <button class="header-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="bi bi-justify"></i>
+          </button>
+          <form class="header-search d-none d-md-flex" onsubmit="event.preventDefault();">
+            <div class="position-relative w-100">
+              <input type="search" class="form-control" placeholder="Search operations...">
+              <i class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3 text-muted"></i>
+            </div>
+          </form>
+        </div>
+
+        <div class="header-actions">
+          <!-- Notifications Dropdown -->
+          <div class="dropdown">
+            <button class="action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-bell"></i>
+              <span class="badge-dot"></span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end notification-menu">
+              <div class="notification-header">
+                <span>Notifications</span>
+                <a href="#" class="text-primary small" onclick="event.preventDefault(); Toast.show('All notifications marked as read', 'success')">Mark all read</a>
+              </div>
+              <ul class="notification-list">
+                <li class="notification-item unread">
+                  <div class="notification-icon bg-success-light text-success">
+                    <i class="bi bi-bag-check"></i>
+                  </div>
+                  <div class="notification-text">
+                    <p class="mb-0 text-dark">New order received <strong>TE-582914</strong></p>
+                    <span class="notification-time">5 mins ago</span>
+                  </div>
+                </li>
+                <li class="notification-item unread">
+                  <div class="notification-icon bg-warning-light text-warning">
+                    <i class="bi bi-exclamation-triangle"></i>
+                  </div>
+                  <div class="notification-text">
+                    <p class="mb-0 text-dark">Product <strong>HP Spectre x360</strong> is out of stock!</p>
+                    <span class="notification-time">2 hours ago</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- User Profile Dropdown -->
+          <div class="dropdown profile-dropdown">
+            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Admin Avatar" class="profile-avatar" id="headerAdminAvatar">
+              <div class="profile-info d-none d-lg-block">
+                <span class="profile-name" id="headerAdminName">Zain Ahmed</span>
+                <span class="profile-role">Super Admin</span>
+              </div>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> My Profile</a></li>
+              <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear"></i> Store Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <main class="content-body">
+        <div class="page-title-box d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <h1 class="page-title">Dashboard Overview</h1>
+            <p class="text-muted small mb-0">Real-time statistics & business insights for Tech Emporium.</p>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-custom-outline" onclick="window.location.reload()"><i class="bi bi-arrow-clockwise me-1"></i> Refresh</button>
+            <a href="reports.html" class="btn btn-custom-primary"><i class="bi bi-file-earmark-bar-graph me-1"></i> View Reports</a>
+          </div>
+        </div>
+
+        <!-- Summary Cards Grid -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
+          <!-- Total Revenue -->
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Total Revenue</p>
+                <h3 id="statRevenue">Rs. 0</h3>
+                <span class="stat-trend text-success"><i class="bi bi-graph-up"></i> +12.5% vs last month</span>
+              </div>
+              <div class="stat-icon bg-success-light text-success">
+                <i class="bi bi-cash-stack"></i>
+              </div>
+            </div>
+          </div>
+          <!-- Total Orders -->
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Total Orders</p>
+                <h3 id="statOrders">0</h3>
+                <span class="stat-trend text-success"><i class="bi bi-graph-up"></i> +8.2% vs last month</span>
+              </div>
+              <div class="stat-icon bg-primary-light text-primary">
+                <i class="bi bi-cart-check"></i>
+              </div>
+            </div>
+          </div>
+          <!-- Total Customers -->
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Total Customers</p>
+                <h3 id="statCustomers">0</h3>
+                <span class="stat-trend text-success"><i class="bi bi-graph-up"></i> +5.4% new signups</span>
+              </div>
+              <div class="stat-icon bg-info-light text-info">
+                <i class="bi bi-people"></i>
+              </div>
+            </div>
+          </div>
+          <!-- Total Products -->
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Total Products</p>
+                <h3 id="statProducts">0</h3>
+                <span class="stat-trend text-muted"><i class="bi bi-dash"></i> Active Catalog</span>
+              </div>
+              <div class="stat-icon bg-warning-light text-warning">
+                <i class="bi bi-box-seam"></i>
+              </div>
+            </div>
+          </div>
+          <!-- Pending Orders -->
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Pending Orders</p>
+                <h3 id="statPendingOrders">0</h3>
+                <span class="stat-trend text-warning"><i class="bi bi-clock"></i> Requires processing</span>
+              </div>
+              <div class="stat-icon bg-warning-light text-warning">
+                <i class="bi bi-hourglass-split"></i>
+              </div>
+            </div>
+          </div>
+          <!-- Completed Orders -->
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Completed Orders</p>
+                <h3 id="statCompletedOrders">0</h3>
+                <span class="stat-trend text-success"><i class="bi bi-check-circle"></i> Successfully delivered</span>
+              </div>
+              <div class="stat-icon bg-success-light text-success">
+                <i class="bi bi-truck"></i>
+              </div>
+            </div>
+          </div>
+          <!-- Low Stock Products -->
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Low Stock Items</p>
+                <h3 id="statLowStock">0</h3>
+                <span class="stat-trend text-danger"><i class="bi bi-exclamation-triangle"></i> Stock count &lt; 5</span>
+              </div>
+              <div class="stat-icon bg-danger-light text-danger">
+                <i class="bi bi-graph-down"></i>
+              </div>
+            </div>
+          </div>
+          <!-- Total Reviews -->
+          <div class="col">
+            <div class="card-custom stat-card">
+              <div class="stat-info">
+                <p>Total Reviews</p>
+                <h3 id="statReviews">0</h3>
+                <span class="stat-trend text-info"><i class="bi bi-star"></i> Customer opinions</span>
+              </div>
+              <div class="stat-icon bg-info-light text-info">
+                <i class="bi bi-chat-left-text"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Widget -->
+        <div class="row mb-4">
+          <div class="col-lg-8 mb-4 mb-lg-0">
+            <div class="card-custom h-100">
+              <div class="card-header-custom">
+                <h5 class="card-title-custom">Revenue Overview</h5>
+                <span class="text-muted small">Sales Trend 2026 (PKR)</span>
+              </div>
+              <div class="card-body-custom">
+                <div style="height: 300px; position: relative;">
+                  <canvas id="revenueChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card-custom h-100">
+              <div class="card-header-custom">
+                <h5 class="card-title-custom">Order Status distribution</h5>
+              </div>
+              <div class="card-body-custom d-flex flex-column align-items-center justify-content-center">
+                <div style="height: 250px; position: relative; width: 100%;">
+                  <canvas id="orderChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tables & Lists Grid -->
+        <div class="row">
+          <!-- Recent Orders -->
+          <div class="col-xl-8 mb-4">
+            <div class="card-custom h-100 mb-0">
+              <div class="card-header-custom">
+                <h5 class="card-title-custom">Recent Sales Orders</h5>
+                <a href="orders.html" class="btn btn-sm btn-custom-outline">View All Orders</a>
+              </div>
+              <div class="card-body-custom p-0">
+                <div class="table-responsive">
+                  <table class="table table-custom">
+                    <thead>
+                      <tr>
+                        <th>Order #</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Method</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="recentOrdersTable">
+                      <!-- Rendered via JS -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Latest Customers & Top Selling -->
+          <div class="col-xl-4 mb-4">
+            <div class="card-custom h-100 mb-0">
+              <div class="card-header-custom">
+                <h5 class="card-title-custom">Latest Signed Customers</h5>
+                <a href="customers.html" class="btn btn-sm btn-custom-outline">All Customers</a>
+              </div>
+              <div class="card-body-custom p-0">
+                <div class="p-3" id="latestCustomersList">
+                  <!-- Rendered via JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="admin-footer text-center">
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+          <p class="mb-0">&copy; 2026 Tech Emporium. Admin Dashboard Panel.</p>
+          <p class="mb-0">Powered by Bootstrap 5 &amp; Vanilla JS.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button id="btn-back-to-top" class="back-to-top" aria-label="Back to Top">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Load Dynamic Stats from db
+      const products = db.get("products", DEFAULT_PRODUCTS);
+      const orders = db.get("orders", DEFAULT_ORDERS);
+      const customers = db.get("customers", DEFAULT_CUSTOMERS);
+      const reviews = db.get("reviews", DEFAULT_REVIEWS);
+      
+      // Calculations
+      const totalProducts = products.length;
+      const totalOrders = orders.length;
+      const totalCustomers = customers.length;
+      const totalReviews = reviews.length;
+      
+      // Calculate revenue from Completed/Delivered/Shipped/Processing orders
+      const revenue = orders
+        .filter(o => o.deliveryStatus !== "Cancelled" && o.paymentStatus === "Completed")
+        .reduce((sum, o) => sum + o.amount, 0);
+
+      const pendingOrders = orders.filter(o => o.deliveryStatus === "Pending" || o.deliveryStatus === "Processing").length;
+      const completedOrders = orders.filter(o => o.deliveryStatus === "Delivered").length;
+      const lowStockItems = products.filter(p => p.stock < 5).length;
+
+      // Update counters
+      document.getElementById("statRevenue").textContent = formatPKR(revenue);
+      document.getElementById("statOrders").textContent = totalOrders;
+      document.getElementById("statCustomers").textContent = totalCustomers;
+      document.getElementById("statProducts").textContent = totalProducts;
+      document.getElementById("statPendingOrders").textContent = pendingOrders;
+      document.getElementById("statCompletedOrders").textContent = completedOrders;
+      document.getElementById("statLowStock").textContent = lowStockItems;
+      document.getElementById("statReviews").textContent = totalReviews;
+
+      // Load Profile Info
+      const profileObj = db.get("profile", DEFAULT_ADMIN);
+      document.getElementById("headerAdminName").textContent = profileObj.name;
+
+      // Render Recent Orders (first 4)
+      const recentOrders = orders.slice(0, 4);
+      let orderHtml = "";
+      recentOrders.forEach(o => {
+        let badgeClass = "badge-info-custom";
+        if (o.deliveryStatus === "Delivered") badgeClass = "badge-success-custom";
+        if (o.deliveryStatus === "Cancelled") badgeClass = "badge-danger-custom";
+        if (o.deliveryStatus === "Processing") badgeClass = "badge-warning-custom";
+
+        orderHtml += `
+          <tr>
+            <td class="fw-bold">${o.orderNumber}</td>
+            <td>${o.customerName}</td>
+            <td>${o.date}</td>
+            <td>${o.paymentMethod}</td>
+            <td>${formatPKR(o.amount)}</td>
+            <td><span class="badge-custom ${badgeClass}">${o.deliveryStatus}</span></td>
+            <td>
+              <a href="order-details.html?order=${o.orderNumber}" class="btn-action-custom" title="View details"><i class="bi bi-eye"></i></a>
+            </td>
+          </tr>
+        `;
+      });
+      document.getElementById("recentOrdersTable").innerHTML = orderHtml || "<tr><td colspan='7' class='text-center text-muted'>No orders logged</td></tr>";
+
+      // Render Latest Customers (first 4)
+      const latestCust = customers.slice(0, 4);
+      let custHtml = "";
+      latestCust.forEach(c => {
+        custHtml += `
+          <div class="d-flex align-items-center justify-content-between mb-3 border-bottom pb-2">
+            <div class="d-flex align-items-center gap-3">
+              <div class="bg-primary-light text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; font-weight: 700;">
+                ${c.name.charAt(0)}
+              </div>
+              <div>
+                <h6 class="mb-0 text-dark" style="font-size: 0.875rem; font-weight:600;">${c.name}</h6>
+                <span class="text-muted small">${c.email}</span>
+              </div>
+            </div>
+            <div class="text-end">
+              <span class="d-block fw-bold small text-dark">${formatPKR(c.spending)}</span>
+              <span class="text-muted small">${c.orderCount} orders</span>
+            </div>
+          </div>
+        `;
+      });
+      document.getElementById("latestCustomersList").innerHTML = custHtml || "<p class='text-center text-muted m-0 p-3'>No customer accounts</p>";
+
+      // Setup Charts via Chart.js
+      const revCtx = document.getElementById('revenueChart').getContext('2d');
+      // Calculate revenue monthly summary (simulated based on orders dates)
+      new Chart(revCtx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [{
+            label: 'Sales Revenue (PKR)',
+            data: [120000, 240000, 180000, 310000, 430000, revenue || 620000, 580000, 710000, 890000, 820000, 950000, 1200000],
+            borderColor: '#2563eb',
+            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+            fill: true,
+            tension: 0.4,
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: {
+              grid: { color: '#f1f5f9' },
+              ticks: { callback: value => 'Rs. ' + (value/1000) + 'k' }
+            },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // Status Chart
+      const orderCtx = document.getElementById('orderChart').getContext('2d');
+      // Count statuses
+      const deliveredCount = orders.filter(o => o.deliveryStatus === 'Delivered').length;
+      const processingCount = orders.filter(o => o.deliveryStatus === 'Processing' || o.deliveryStatus === 'Pending').length;
+      const shippedCount = orders.filter(o => o.deliveryStatus === 'Shipped').length;
+      const cancelledCount = orders.filter(o => o.deliveryStatus === 'Cancelled').length;
+
+      new Chart(orderCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Delivered', 'Processing', 'Shipped', 'Cancelled'],
+          datasets: [{
+            data: [deliveredCount, processingCount, shippedCount, cancelledCount],
+            backgroundColor: ['#10b981', '#f59e0b', '#06b6d4', '#ef4444'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { boxWidth: 12, font: { size: 11 } }
+            }
+          },
+          cutout: '70%'
+        }
+      });
+    });
+  </script>
+</body>
+</html>

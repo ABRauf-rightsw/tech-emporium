@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products Management | Tech Emporium Admin</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin-style.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div id="admin-wrapper">
+    <!-- Sidebar -->
+    <aside id="admin-sidebar">
+      <div class="sidebar-brand">
+        <a class="d-flex align-items-center gap-2 text-white" href="dashboard.html">
+          <i class="bi bi-cpu text-primary fs-4"></i>
+          <span>TECH <span class="text-primary">EMPORIUM</span></span>
+        </a>
+      </div>
+      
+      <div class="sidebar-menu">
+        <div class="menu-label">Main Menu</div>
+        <a href="dashboard.html" class="menu-item">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard</span>
+        </a>
+        
+        <div class="menu-label mt-4">Catalog</div>
+        <a href="products.html" class="menu-item">
+          <i class="bi bi-box-seam"></i>
+          <span>Products</span>
+        </a>
+        <a href="categories.html" class="menu-item">
+          <i class="bi bi-grid"></i>
+          <span>Categories</span>
+        </a>
+        <a href="brands.html" class="menu-item">
+          <i class="bi bi-award"></i>
+          <span>Brands</span>
+        </a>
+        <a href="inventory.html" class="menu-item">
+          <i class="bi bi-journal-text"></i>
+          <span>Inventory</span>
+        </a>
+        
+        <div class="menu-label mt-4">Sales &amp; Customers</div>
+        <a href="orders.html" class="menu-item">
+          <i class="bi bi-cart3"></i>
+          <span>Orders</span>
+        </a>
+        <a href="customers.html" class="menu-item">
+          <i class="bi bi-people"></i>
+          <span>Customers</span>
+        </a>
+        <a href="sellers.html" class="menu-item">
+          <i class="bi bi-shop"></i>
+          <span>Sellers</span>
+        </a>
+
+        <div class="menu-label mt-4">Marketing &amp; Reviews</div>
+        <a href="reviews.html" class="menu-item">
+          <i class="bi bi-star"></i>
+          <span>Reviews</span>
+        </a>
+        <a href="coupons.html" class="menu-item">
+          <i class="bi bi-percent"></i>
+          <span>Coupons</span>
+        </a>
+        <a href="banners.html" class="menu-item">
+          <i class="bi bi-image"></i>
+          <span>Banners</span>
+        </a>
+
+        <div class="menu-label mt-4">Management</div>
+        <a href="reports.html" class="menu-item">
+          <i class="bi bi-bar-chart"></i>
+          <span>Reports</span>
+        </a>
+        <a href="settings.html" class="menu-item">
+          <i class="bi bi-gear"></i>
+          <span>Settings</span>
+        </a>
+        <a href="profile.html" class="menu-item">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="menu-item text-danger w-100 border-0 bg-transparent">
+          <i class="bi bi-box-arrow-right text-danger"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <div id="admin-content">
+      <!-- Header -->
+      <header id="admin-header">
+        <div class="d-flex align-items-center gap-3">
+          <button class="header-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="bi bi-justify"></i>
+          </button>
+          <form class="header-search d-none d-md-flex" onsubmit="event.preventDefault();">
+            <div class="position-relative w-100">
+              <input type="search" class="form-control" id="globalSearchInput" placeholder="Search products...">
+              <i class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3 text-muted"></i>
+            </div>
+          </form>
+        </div>
+
+        <div class="header-actions">
+          <!-- User Profile Dropdown -->
+          <div class="dropdown profile-dropdown">
+            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Admin Avatar" class="profile-avatar" id="headerAdminAvatar">
+              <div class="profile-info d-none d-lg-block">
+                <span class="profile-name" id="headerAdminName">Zain Ahmed</span>
+                <span class="profile-role">Super Admin</span>
+              </div>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> My Profile</a></li>
+              <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear"></i> Store Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <main class="content-body">
+        <div class="page-title-box d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <h1 class="page-title">Products Management</h1>
+            <p class="text-muted small mb-0">Browse, search, edit, and delete products in the catalog.</p>
+          </div>
+          <a href="add-product.html" class="btn btn-custom-primary"><i class="bi bi-plus-lg me-1"></i> Add New Product</a>
+        </div>
+
+        <!-- Filter Card -->
+        <div class="card-custom mb-4">
+          <div class="card-body-custom">
+            <div class="row g-3">
+              <!-- Search -->
+              <div class="col-md-4">
+                <label class="form-label small text-muted">Search Product</label>
+                <div class="position-relative">
+                  <input type="text" class="form-control" id="productSearch" placeholder="Name or SKU...">
+                  <i class="bi bi-search position-absolute top-50 end-0 translate-middle-y me-3 text-muted"></i>
+                </div>
+              </div>
+              <!-- Category Filter -->
+              <div class="col-md-3">
+                <label class="form-label small text-muted">Filter Category</label>
+                <select class="form-select" id="filterCategory">
+                  <option value="">All Categories</option>
+                  <!-- Populated via JS -->
+                </select>
+              </div>
+              <!-- Brand Filter -->
+              <div class="col-md-3">
+                <label class="form-label small text-muted">Filter Brand</label>
+                <select class="form-select" id="filterBrand">
+                  <option value="">All Brands</option>
+                  <!-- Populated via JS -->
+                </select>
+              </div>
+              <!-- Status Filter -->
+              <div class="col-md-2">
+                <label class="form-label small text-muted">Status</label>
+                <select class="form-select" id="filterStatus">
+                  <option value="">All</option>
+                  <option value="Active">Active</option>
+                  <option value="Inactive">Inactive</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Table Card -->
+        <div class="card-custom">
+          <div class="card-body-custom p-0">
+            <div class="table-responsive">
+              <table class="table table-custom align-middle">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>SKU</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Price (PKR)</th>
+                    <th>Stock</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="productsTableBody">
+                  <!-- Rendered dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Pagination Footer -->
+          <div class="card-footer bg-transparent border-top p-3 d-flex flex-wrap align-items-center justify-content-between gap-3">
+            <span class="text-muted small" id="paginationInfo">Showing 0 of 0 entries</span>
+            <div id="productsPagination"></div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="admin-footer text-center">
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+          <p class="mb-0">&copy; 2026 Tech Emporium. Admin Dashboard Panel.</p>
+          <p class="mb-0">Powered by Bootstrap 5 &amp; Vanilla JS.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-body text-center p-4">
+          <i class="bi bi-exclamation-triangle-fill text-danger fs-1 mb-3"></i>
+          <h5 class="fw-bold">Confirm Deletion</h5>
+          <p class="text-muted small mb-4">Are you sure you want to delete this product? This action will remove the item from the catalog permanently.</p>
+          <div class="d-flex justify-content-center gap-2">
+            <button type="button" class="btn btn-custom-outline px-4" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger px-4" id="confirmDeleteBtn">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- View Product Modal -->
+  <div class="modal fade" id="viewProductModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header border-bottom">
+          <h5 class="fw-bold m-0" id="viewProductName">Product Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row g-4">
+            <div class="col-md-5 text-center bg-light rounded p-3 d-flex align-items-center justify-content-center">
+              <img id="viewProductImg" src="" alt="Product" class="img-fluid" style="max-height: 240px; object-fit: contain;">
+            </div>
+            <div class="col-md-7">
+              <span class="badge-custom badge-info-custom mb-2" id="viewProductCategory">Category</span>
+              <h4 class="fw-bold text-dark" id="viewProductTitleName">Name</h4>
+              <p class="text-muted small" id="viewProductDesc">Description</p>
+              
+              <div class="row g-3 py-2 border-top border-bottom my-3">
+                <div class="col-6">
+                  <span class="d-block text-muted small">SKU Code</span>
+                  <strong class="text-dark" id="viewProductSku">SKU</strong>
+                </div>
+                <div class="col-6">
+                  <span class="d-block text-muted small">Brand Partner</span>
+                  <strong class="text-dark" id="viewProductBrand">Brand</strong>
+                </div>
+                <div class="col-6">
+                  <span class="d-block text-muted small">Price tag (PKR)</span>
+                  <strong class="text-primary fs-5" id="viewProductPrice">Price</strong>
+                </div>
+                <div class="col-6">
+                  <span class="d-block text-muted small">Inventory Stock</span>
+                  <strong class="text-dark" id="viewProductStock">Stock</strong>
+                </div>
+              </div>
+              
+              <div>
+                <h6 class="fw-bold small text-dark mb-1">Specifications:</h6>
+                <pre class="small text-muted mb-0 bg-light p-2 rounded" id="viewProductSpecs" style="white-space: pre-wrap; font-family: inherit;"></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    let products = [];
+    let currentPage = 1;
+    const itemsPerPage = 5;
+    let deleteId = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      products = db.get("products", DEFAULT_PRODUCTS);
+      
+      // Load Profile Info
+      const profileObj = db.get("profile", DEFAULT_ADMIN);
+      document.getElementById("headerAdminName").textContent = profileObj.name;
+
+      // Populate filter dropdowns
+      const categories = db.get("categories", DEFAULT_CATEGORIES);
+      const brands = db.get("brands", DEFAULT_BRANDS);
+      
+      const filterCategory = document.getElementById("filterCategory");
+      categories.forEach(c => {
+        filterCategory.innerHTML += `<option value="${c.name}">${c.name}</option>`;
+      });
+
+      const filterBrand = document.getElementById("filterBrand");
+      brands.forEach(b => {
+        filterBrand.innerHTML += `<option value="${b.name}">${b.name}</option>`;
+      });
+
+      // Render product grid
+      renderProducts();
+
+      // Bind Listeners
+      document.getElementById("productSearch").addEventListener("input", () => { currentPage = 1; renderProducts(); });
+      document.getElementById("filterCategory").addEventListener("change", () => { currentPage = 1; renderProducts(); });
+      document.getElementById("filterBrand").addEventListener("change", () => { currentPage = 1; renderProducts(); });
+      document.getElementById("filterStatus").addEventListener("change", () => { currentPage = 1; renderProducts(); });
+      
+      // Global header search link
+      const globalSearch = document.getElementById("globalSearchInput");
+      if (globalSearch) {
+        globalSearch.addEventListener("input", (e) => {
+          document.getElementById("productSearch").value = e.target.value;
+          currentPage = 1;
+          renderProducts();
+        });
+      }
+
+      // Delete action modal confirm
+      document.getElementById("confirmDeleteBtn").addEventListener("click", () => {
+        if (deleteId) {
+          products = products.filter(p => p.id !== deleteId);
+          db.save("products", products);
+          Toast.show("Product deleted from database successfully!", "danger");
+          bootstrap.Modal.getInstance(document.getElementById("deleteConfirmModal")).hide();
+          renderProducts();
+        }
+      });
+    });
+
+    function renderProducts() {
+      const search = document.getElementById("productSearch").value.toLowerCase();
+      const category = document.getElementById("filterCategory").value;
+      const brand = document.getElementById("filterBrand").value;
+      const status = document.getElementById("filterStatus").value;
+
+      // Apply Filters
+      const filtered = products.filter(p => {
+        const matchesSearch = p.name.toLowerCase().includes(search) || p.sku.toLowerCase().includes(search);
+        const matchesCategory = category === "" || p.category === category;
+        const matchesBrand = brand === "" || p.brand.toLowerCase() === brand.toLowerCase();
+        const matchesStatus = status === "" || p.status === status;
+        return matchesSearch && matchesCategory && matchesBrand && matchesStatus;
+      });
+
+      // Pagination
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = Math.min(startIndex + itemsPerPage, filtered.length);
+      const pageItems = filtered.slice(startIndex, endIndex);
+
+      // Render rows
+      let html = "";
+      pageItems.forEach(p => {
+        let badgeClass = p.status === "Active" ? "badge-success-custom" : "badge-danger-custom";
+        // Convert local asset path if needed, fallback to placeholder svg
+        const imgSrc = p.image.startsWith("http") ? p.image : `../assets/images/laptops/${p.image}`;
+        
+        // Custom check if file is accessory or laptop
+        let finalImg = p.image;
+        if (!p.image.includes("/")) {
+          if (p.category.toLowerCase().includes("gaming")) finalImg = "../assets/images/laptops/gaming-laptop.svg";
+          else if (p.category.toLowerCase().includes("business")) finalImg = "../assets/images/laptops/business-laptop.svg";
+          else if (p.category.toLowerCase().includes("student")) finalImg = "../assets/images/laptops/student-laptop.svg";
+          else if (p.category.toLowerCase().includes("monitor")) finalImg = "../assets/images/accessories/monitor.svg";
+          else if (p.category.toLowerCase().includes("storage")) finalImg = "../assets/images/accessories/ssd.svg";
+          else finalImg = "../assets/images/accessories/keyboard.svg";
+        }
+
+        html += `
+          <tr>
+            <td>
+              <img src="${finalImg}" alt="${p.name}" class="table-img">
+            </td>
+            <td>
+              <div class="fw-bold text-dark">${p.name}</div>
+            </td>
+            <td class="text-muted small">${p.sku}</td>
+            <td>${p.category}</td>
+            <td>${p.brand}</td>
+            <td class="fw-semibold text-dark">${formatPKR(p.price)}</td>
+            <td>
+              <span class="fw-bold ${p.stock < 5 ? 'text-danger' : 'text-dark'}">${p.stock}</span>
+              ${p.stock < 5 ? '<i class="bi bi-exclamation-circle text-danger ms-1" title="Low Stock!"></i>' : ''}
+            </td>
+            <td><span class="badge-custom ${badgeClass}">${p.status}</span></td>
+            <td>
+              <div class="d-flex gap-1">
+                <button onclick="viewProduct(${p.id})" class="btn-action-custom" title="View details"><i class="bi bi-eye"></i></button>
+                <a href="edit-product.html?id=${p.id}" class="btn-action-custom" title="Edit product"><i class="bi bi-pencil"></i></a>
+                <button onclick="confirmDelete(${p.id})" class="btn-action-custom btn-action-delete" title="Delete product"><i class="bi bi-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+        `;
+      });
+
+      document.getElementById("productsTableBody").innerHTML = html || `<tr><td colspan="9" class="text-center py-4 text-muted">No products found matching filters</td></tr>`;
+      
+      // Update pagination details
+      document.getElementById("paginationInfo").textContent = filtered.length > 0 
+        ? `Showing ${startIndex + 1} to ${endIndex} of ${filtered.length} entries` 
+        : `Showing 0 to 0 of 0 entries`;
+
+      // Render pagination buttons
+      renderPagination(filtered.length, itemsPerPage, currentPage, "productsPagination", (pageNum) => {
+        currentPage = pageNum;
+        renderProducts();
+      });
+    }
+
+    function viewProduct(id) {
+      const p = products.find(prod => prod.id === id);
+      if (!p) return;
+
+      let finalImg = p.image;
+      if (!p.image.includes("/")) {
+        if (p.category.toLowerCase().includes("gaming")) finalImg = "../assets/images/laptops/gaming-laptop.svg";
+        else if (p.category.toLowerCase().includes("business")) finalImg = "../assets/images/laptops/business-laptop.svg";
+        else if (p.category.toLowerCase().includes("student")) finalImg = "../assets/images/laptops/student-laptop.svg";
+        else if (p.category.toLowerCase().includes("monitor")) finalImg = "../assets/images/accessories/monitor.svg";
+        else if (p.category.toLowerCase().includes("storage")) finalImg = "../assets/images/accessories/ssd.svg";
+        else finalImg = "../assets/images/accessories/keyboard.svg";
+      }
+
+      document.getElementById("viewProductName").textContent = p.name;
+      document.getElementById("viewProductTitleName").textContent = p.name;
+      document.getElementById("viewProductImg").src = finalImg;
+      document.getElementById("viewProductCategory").textContent = p.category;
+      document.getElementById("viewProductDesc").textContent = p.desc || "No product description provided.";
+      document.getElementById("viewProductSku").textContent = p.sku;
+      document.getElementById("viewProductBrand").textContent = p.brand;
+      document.getElementById("viewProductPrice").textContent = formatPKR(p.price);
+      document.getElementById("viewProductStock").textContent = p.stock + " units available";
+      document.getElementById("viewProductSpecs").textContent = p.specs || "No technical specs declared.";
+
+      const modal = new bootstrap.Modal(document.getElementById("viewProductModal"));
+      modal.show();
+    }
+
+    function confirmDelete(id) {
+      deleteId = id;
+      const modal = new bootstrap.Modal(document.getElementById("deleteConfirmModal"));
+      modal.show();
+    }
+  </script>
+</body>
+</html>

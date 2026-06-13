@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Details | Tech Emporium Admin</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin-style.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <div id="admin-wrapper">
+    <!-- Sidebar -->
+    <aside id="admin-sidebar">
+      <div class="sidebar-brand">
+        <a class="d-flex align-items-center gap-2 text-white" href="dashboard.html">
+          <i class="bi bi-cpu text-primary fs-4"></i>
+          <span>TECH <span class="text-primary">EMPORIUM</span></span>
+        </a>
+      </div>
+      
+      <div class="sidebar-menu">
+        <div class="menu-label">Main Menu</div>
+        <a href="dashboard.html" class="menu-item">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard</span>
+        </a>
+        
+        <div class="menu-label mt-4">Catalog</div>
+        <a href="products.html" class="menu-item">
+          <i class="bi bi-box-seam"></i>
+          <span>Products</span>
+        </a>
+        <a href="categories.html" class="menu-item">
+          <i class="bi bi-grid"></i>
+          <span>Categories</span>
+        </a>
+        <a href="brands.html" class="menu-item">
+          <i class="bi bi-award"></i>
+          <span>Brands</span>
+        </a>
+        <a href="inventory.html" class="menu-item">
+          <i class="bi bi-journal-text"></i>
+          <span>Inventory</span>
+        </a>
+        
+        <div class="menu-label mt-4">Sales &amp; Customers</div>
+        <a href="orders.html" class="menu-item">
+          <i class="bi bi-cart3"></i>
+          <span>Orders</span>
+        </a>
+        <a href="customers.html" class="menu-item">
+          <i class="bi bi-people"></i>
+          <span>Customers</span>
+        </a>
+        <a href="sellers.html" class="menu-item">
+          <i class="bi bi-shop"></i>
+          <span>Sellers</span>
+        </a>
+
+        <div class="menu-label mt-4">Marketing &amp; Reviews</div>
+        <a href="reviews.html" class="menu-item">
+          <i class="bi bi-star"></i>
+          <span>Reviews</span>
+        </a>
+        <a href="coupons.html" class="menu-item">
+          <i class="bi bi-percent"></i>
+          <span>Coupons</span>
+        </a>
+        <a href="banners.html" class="menu-item">
+          <i class="bi bi-image"></i>
+          <span>Banners</span>
+        </a>
+
+        <div class="menu-label mt-4">Management</div>
+        <a href="reports.html" class="menu-item">
+          <i class="bi bi-bar-chart"></i>
+          <span>Reports</span>
+        </a>
+        <a href="settings.html" class="menu-item">
+          <i class="bi bi-gear"></i>
+          <span>Settings</span>
+        </a>
+        <a href="profile.html" class="menu-item">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </div>
+
+      <div class="sidebar-footer">
+        <a href="login.html" class="menu-item text-danger w-100 border-0 bg-transparent">
+          <i class="bi bi-box-arrow-right text-danger"></i>
+          <span>Logout</span>
+        </a>
+      </div>
+    </aside>
+    <div class="sidebar-overlay"></div>
+
+    <!-- Main Content -->
+    <div id="admin-content">
+      <!-- Header -->
+      <header id="admin-header">
+        <div class="d-flex align-items-center gap-3">
+          <button class="header-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+            <i class="bi bi-justify"></i>
+          </button>
+          <a href="orders.html" class="btn btn-sm btn-custom-outline"><i class="bi bi-arrow-left me-1"></i> Back to Orders</a>
+        </div>
+
+        <div class="header-actions">
+          <!-- User Profile Dropdown -->
+          <div class="dropdown profile-dropdown">
+            <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Admin Avatar" class="profile-avatar" id="headerAdminAvatar">
+              <div class="profile-info d-none d-lg-block">
+                <span class="profile-name" id="headerAdminName">Zain Ahmed</span>
+                <span class="profile-role">Super Admin</span>
+              </div>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="profile.html"><i class="bi bi-person"></i> My Profile</a></li>
+              <li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear"></i> Store Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="login.html"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <main class="content-body">
+        <div class="page-title-box d-flex flex-wrap align-items-center justify-content-between gap-3">
+          <div>
+            <h1 class="page-title" id="orderTitleName">Order Details</h1>
+            <p class="text-muted small mb-0">Invoice specifications, client shipping addresses, and logs validation sheet.</p>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-custom-outline" onclick="window.print()"><i class="bi bi-printer me-1"></i> Print Receipt</button>
+            <button class="btn btn-custom-primary" id="updateStatusBtn"><i class="bi bi-arrow-repeat me-1"></i> Quick Update</button>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Left Main details -->
+          <div class="col-lg-8">
+            <!-- Order Item Details -->
+            <div class="card-custom mb-4">
+              <div class="card-header-custom">
+                <h5 class="card-title-custom">Purchased Hardware Items</h5>
+              </div>
+              <div class="card-body-custom p-0">
+                <div class="table-responsive">
+                  <table class="table table-custom align-middle">
+                    <thead>
+                      <tr>
+                        <th>Product Details</th>
+                        <th>Price (PKR)</th>
+                        <th>Qty</th>
+                        <th class="text-end">Subtotal</th>
+                      </tr>
+                    </thead>
+                    <tbody id="orderItemsTable">
+                      <!-- Loaded via JS -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- Client/Customer information -->
+            <div class="card-custom">
+              <div class="card-header-custom">
+                <h5 class="card-title-custom">Shipping Address &amp; Customer Profile</h5>
+              </div>
+              <div class="card-body-custom">
+                <div class="row g-3">
+                  <div class="col-md-6 border-end">
+                    <h6 class="fw-bold text-dark small mb-2">Customer Details:</h6>
+                    <p class="mb-1 text-dark" id="infoCustName">Name</p>
+                    <span class="d-block text-muted small" id="infoCustEmail">Email</span>
+                    <span class="d-block text-muted small" id="infoCustPhone">Phone</span>
+                  </div>
+                  <div class="col-md-6 ps-md-4">
+                    <h6 class="fw-bold text-dark small mb-2">Delivery Address:</h6>
+                    <address class="text-muted small mb-0" id="infoCustAddress">
+                      Address Details
+                    </address>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right sidebar timelines -->
+          <div class="col-lg-4">
+            <!-- Timeline Log -->
+            <div class="card-custom mb-4">
+              <div class="card-header-custom">
+                <h5 class="card-title-custom">Logistics Timeline</h5>
+              </div>
+              <div class="card-body-custom">
+                <div class="timeline" id="logisticsTimeline">
+                  <!-- Generated via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment details -->
+            <div class="card-custom">
+              <div class="card-header-custom">
+                <h5 class="card-title-custom">Billing Channel</h5>
+              </div>
+              <div class="card-body-custom">
+                <div class="p-3 bg-light rounded text-center mb-3 border">
+                  <div id="paymentChannelIcon" class="fs-1 text-primary mb-2">
+                    <i class="bi bi-wallet2"></i>
+                  </div>
+                  <h6 class="fw-bold text-dark mb-0" id="paymentChannelTitle">Payment Method</h6>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted small">Payment status:</span>
+                  <span class="badge-custom badge-info-custom" id="paymentStatusBadge">Pending</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-muted small">Delivery charges:</span>
+                  <span class="fw-semibold text-dark small" id="deliveryCharges">Rs. 0</span>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                  <span class="fw-bold text-dark fs-6">Grand Total:</span>
+                  <span class="fw-bold text-primary fs-5" id="grandTotalAmount">Rs. 0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="admin-footer text-center">
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+          <p class="mb-0">&copy; 2026 Tech Emporium. Admin Dashboard Panel.</p>
+          <p class="mb-0">Powered by Bootstrap 5 &amp; Vanilla JS.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script>
+    let orders = [];
+    let orderNum = "";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Load Profile Info
+      const profileObj = db.get("profile", DEFAULT_ADMIN);
+      document.getElementById("headerAdminName").textContent = profileObj.name;
+
+      orders = db.get("orders", DEFAULT_ORDERS);
+
+      // Extract parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      orderNum = urlParams.get("order");
+
+      const o = orders.find(ord => ord.orderNumber === orderNum);
+      if (!o) {
+        alert("Order record not found!");
+        window.location.href = "orders.html";
+        return;
+      }
+
+      // Title
+      document.getElementById("orderTitleName").textContent = `Order Details: ${o.orderNumber}`;
+
+      // Customer details fill
+      document.getElementById("infoCustName").textContent = o.customerName;
+      document.getElementById("infoCustEmail").textContent = o.customerEmail;
+      document.getElementById("infoCustPhone").textContent = o.customerPhone;
+      document.getElementById("infoCustAddress").textContent = o.customerAddress;
+
+      // Pricing details fill
+      const charges = o.amount > 10000 ? 0 : 250;
+      document.getElementById("deliveryCharges").textContent = formatPKR(charges);
+      document.getElementById("grandTotalAmount").textContent = formatPKR(o.amount);
+
+      // Payment Method Setup
+      document.getElementById("paymentChannelTitle").textContent = o.paymentMethod;
+      let payIconHtml = `<i class="bi bi-wallet2"></i>`;
+      if (o.paymentMethod.toLowerCase().includes("easypaisa") || o.paymentMethod.toLowerCase().includes("jazzcash")) {
+        payIconHtml = `<i class="bi bi-phone-vibrate text-success"></i>`;
+      } else if (o.paymentMethod.toLowerCase().includes("bank")) {
+        payIconHtml = `<i class="bi bi-bank text-primary"></i>`;
+      } else if (o.paymentMethod.toLowerCase().includes("cash")) {
+        payIconHtml = `<i class="bi bi-cash text-warning"></i>`;
+      }
+      document.getElementById("paymentChannelIcon").innerHTML = payIconHtml;
+
+      // Payment Status Badge
+      let payBadge = document.getElementById("paymentStatusBadge");
+      payBadge.textContent = o.paymentStatus;
+      payBadge.className = "badge-custom " + (o.paymentStatus === "Completed" ? "badge-success-custom" : (o.paymentStatus === "Failed" ? "badge-danger-custom" : "badge-warning-custom"));
+
+      // Items list table
+      let itemsHtml = "";
+      o.items.forEach(item => {
+        // Calculate subtotal
+        const sub = item.qty * item.price;
+        
+        // Match product image reference
+        const productsList = db.get("products", DEFAULT_PRODUCTS);
+        const prod = productsList.find(p => p.name === item.name);
+        
+        let finalImg = "../assets/images/accessories/keyboard.svg";
+        if (prod) {
+          if (!prod.image.includes("/")) {
+            if (prod.category.toLowerCase().includes("gaming")) finalImg = "../assets/images/laptops/gaming-laptop.svg";
+            else if (prod.category.toLowerCase().includes("business")) finalImg = "../assets/images/laptops/business-laptop.svg";
+            else if (prod.category.toLowerCase().includes("student")) finalImg = "../assets/images/laptops/student-laptop.svg";
+            else if (prod.category.toLowerCase().includes("monitor")) finalImg = "../assets/images/accessories/monitor.svg";
+            else if (prod.category.toLowerCase().includes("storage")) finalImg = "../assets/images/accessories/ssd.svg";
+            else finalImg = "../assets/images/accessories/keyboard.svg";
+          } else {
+            finalImg = prod.image;
+          }
+        }
+
+        itemsHtml += `
+          <tr>
+            <td>
+              <div class="d-flex align-items-center gap-3">
+                <img src="${finalImg}" alt="${item.name}" class="table-img border">
+                <div>
+                  <h6 class="mb-0 text-dark" style="font-size:0.875rem; font-weight:600;">${item.name}</h6>
+                  <span class="text-muted small">Category Item</span>
+                </div>
+              </div>
+            </td>
+            <td>${formatPKR(item.price)}</td>
+            <td>x ${item.qty}</td>
+            <td class="text-end fw-semibold text-dark">${formatPKR(sub)}</td>
+          </tr>
+        `;
+      });
+      document.getElementById("orderItemsTable").innerHTML = itemsHtml;
+
+      // Logistics timeline setup
+      renderTimeline(o.deliveryStatus, o.date);
+
+      // Bind quick status updates button
+      document.getElementById("updateStatusBtn").addEventListener("click", () => {
+        const statuses = ["Pending", "Processing", "Shipped", "Delivered", "Cancelled"];
+        const nextStatus = { "Pending": "Processing", "Processing": "Shipped", "Shipped": "Delivered", "Delivered": "Pending", "Cancelled": "Pending" };
+        
+        const currentDel = o.deliveryStatus;
+        const targetDel = nextStatus[currentDel] || "Pending";
+        
+        o.deliveryStatus = targetDel;
+        if (targetDel === "Delivered") o.paymentStatus = "Completed"; // auto complete payment on delivery
+        
+        db.save("orders", orders);
+        Toast.show(`Simulated transition: Status modified to ${targetDel}!`, "success");
+        renderTimeline(targetDel, o.date);
+        
+        // refresh components
+        payBadge.textContent = o.paymentStatus;
+        payBadge.className = "badge-custom " + (o.paymentStatus === "Completed" ? "badge-success-custom" : "badge-warning-custom");
+      });
+    });
+
+    function renderTimeline(status, dateStr) {
+      let activeIndex = 0; // index of active step
+      if (status === "Processing") activeIndex = 1;
+      else if (status === "Shipped") activeIndex = 2;
+      else if (status === "Delivered") activeIndex = 3;
+      else if (status === "Cancelled") activeIndex = -1; // special case
+
+      let steps = [
+        { title: "Order Placed", text: "Customer completed the checkout process on PKR base transaction.", date: dateStr },
+        { title: "Processing Started", text: "Team Emporium catalog managers checked packaging logistics.", date: dateStr },
+        { title: "Shipped", text: "Consignment package loaded to Courier partner distribution hub.", date: dateStr },
+        { title: "Delivered", text: "Verified receipt validation. Package successfully received.", date: dateStr }
+      ];
+
+      let timelineHtml = "";
+      steps.forEach((step, idx) => {
+        let stepClass = "";
+        let iconHtml = ``;
+
+        if (activeIndex === -1) {
+          stepClass = "cancelled";
+          iconHtml = idx === 0 ? `<i class="bi bi-x text-white"></i>` : "";
+        } else if (idx <= activeIndex) {
+          stepClass = "completed";
+          iconHtml = `<i class="bi bi-check text-white"></i>`;
+        } else if (idx === activeIndex + 1) {
+          stepClass = "active";
+        }
+
+        timelineHtml += `
+          <div class="timeline-item ${stepClass}">
+            <div class="timeline-marker">
+              ${iconHtml}
+            </div>
+            <div class="timeline-content">
+              <h6 class="timeline-title text-dark">${step.title}</h6>
+              <span class="timeline-date">${idx <= activeIndex || activeIndex === -1 ? step.date : "Pending"}</span>
+              <p class="timeline-text">${activeIndex === -1 && idx > 0 ? "Cancelled order lifecycle" : step.text}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      if (activeIndex === -1) {
+        timelineHtml = `
+          <div class="timeline-item completed bg-danger-subtle p-2 rounded">
+            <div class="timeline-marker bg-danger border-danger text-white">
+              <i class="bi bi-x text-white"></i>
+            </div>
+            <div class="timeline-content">
+              <h6 class="timeline-title text-danger">Order Cancelled</h6>
+              <span class="timeline-date">${dateStr}</span>
+              <p class="timeline-text text-danger mb-0">This order transaction has been marked cancelled by team admin.</p>
+            </div>
+          </div>
+        ` + timelineHtml;
+      }
+
+      document.getElementById("logisticsTimeline").innerHTML = timelineHtml;
+    }
+  </script>
+</body>
+</html>

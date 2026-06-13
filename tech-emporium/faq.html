@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frequently Asked Questions | Tech Emporium</title>
+  <meta name="description" content="Read customer help guidelines regarding laptop delivery times, payment modes, warranty registration, returns, and order status updates in Pakistan.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- Sticky Navbar Header -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark glass-nav fixed-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
+          <i class="bi bi-cpu text-electric" style="font-size: 1.8rem;"></i>
+          <span>TECH <span class="text-electric">EMPORIUM</span></span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="products.html">Shop Catalog</a></li>
+            <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item active"><a class="nav-link active" href="faq.html">FAQ</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-3">
+            <a href="wishlist.html" class="nav-icon-btn position-relative" aria-label="View Wishlist">
+              <i class="bi bi-heart"></i>
+              <span class="badge-counter wishlist-counter" style="display: none;">0</span>
+            </a>
+            <a href="cart.html" class="nav-icon-btn position-relative" aria-label="View Cart">
+              <i class="bi bi-cart"></i>
+              <span class="badge-counter cart-counter" style="display: none;">0</span>
+            </a>
+            <a href="my-account.html" class="nav-icon-btn" aria-label="My Account"><i class="bi bi-person-circle"></i></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- FAQ Content Area -->
+  <main style="margin-top: 100px;" class="mb-5">
+    <div class="container">
+      
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb small">
+          <li class="breadcrumb-item"><a href="index.html" class="text-electric">Home</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Help FAQ</li>
+        </ol>
+      </nav>
+
+      <div class="row mb-5 text-center">
+        <div class="col-md-8 mx-auto">
+          <h1 class="text-white mb-2">Help &amp; Support FAQ</h1>
+          <p class="text-muted">Common questions regarding shipment processes, payment options, local warranties, and hardware returns.</p>
+          <div class="mx-auto bg-electric" style="width: 60px; height: 3px;"></div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          
+          <div class="accordion" id="faqAccordion">
+            
+            <!-- Shipping Questions -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <i class="bi bi-truck me-2 text-electric"></i>How long does delivery take &amp; what are charges?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We offer flat-rate delivery charges of Rs. 250 across Pakistan. For orders totaling above Rs. 10,000, shipping is entirely FREE. Deliveries within Karachi take 24-48 hours. Orders to Lahore, Islamabad, and Rawalpindi take 2-3 business days. Remote locations might require up to 4-5 business days.
+                </div>
+              </div>
+            </div>
+
+            <!-- Payments Questions -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <i class="bi bi-credit-card me-2 text-electric"></i>What payment options do you support?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We accept various payment methods:
+                  <ul>
+                    <li>Cash On Delivery (COD) for orders up to Rs. 150,000</li>
+                    <li>Direct Bank Transfer (Bank Alfalah / HBL)</li>
+                    <li>Easypaisa Mobile Wallet</li>
+                    <li>JazzCash Mobile Wallet</li>
+                  </ul>
+                  For high-value corporate orders above Rs. 150,000, bank transfer verification is required before shipping.
+                </div>
+              </div>
+            </div>
+
+            <!-- Warranty Questions -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <i class="bi bi-shield-check me-2 text-electric"></i>How does the local/international warranty work?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  All laptops, processors, and components sold at Tech Emporium come with original manufacturer warranty cards (e.g., 1 Year Brand Warranty). You can claim warranty directly at official service centers (Dell, HP, Lenovo, ASUS) in Karachi, Lahore, and Islamabad, or send the hardware back to us to manage the claiming process on your behalf.
+                </div>
+              </div>
+            </div>
+
+            <!-- Returns Questions -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <i class="bi bi-arrow-left-right me-2 text-electric"></i>What is your return &amp; replacement policy?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We support a <strong>7-Day Replacement Policy</strong> if your hardware arrives with manufacturing defects, shipping damages, or mismatching product models. The item must be returned in its original, unopened packaging box with all warranty labels intact. Open box software issues or changes of mind are not eligible for replacement.
+                </div>
+              </div>
+            </div>
+
+            <!-- Order Tracking Questions -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  <i class="bi bi-search me-2 text-electric"></i>How do I track my active orders?
+                </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Once your order is processed from our warehouse, you will receive a tracking ID via Email/SMS. You can audit order progress directly on our <a href="orders.html" class="text-electric">Order History</a> page or enter the courier ID on Leopards Courier or TCS logistics portal websites.
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="pt-5 pb-3">
+    <div class="container text-center">
+      <p class="small text-muted mb-0">&copy; 2026 Tech Emporium. All Rights Reserved. Help center support.</p>
+    </div>
+  </footer>
+
+  <button id="btn-back-to-top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

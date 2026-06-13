@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart | Tech Emporium</title>
+  <meta name="description" content="Manage your shopping cart items, adjust product quantities, and review subtotal calculations in PKR before checking out at Tech Emporium.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Page Loader -->
+  <div id="loader-wrapper">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- Sticky Navbar Header -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark glass-nav fixed-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2 text-white" href="index.html">
+          <i class="bi bi-cpu text-electric" style="font-size: 1.8rem;"></i>
+          <span>TECH <span class="text-electric">EMPORIUM</span></span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="products.html">Shop Catalog</a></li>
+            <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-3">
+            <form class="d-none d-lg-flex global-search-form" role="search">
+              <div class="input-group">
+                <input class="form-control bg-dark border-secondary text-white rounded-start-pill px-3" type="search" placeholder="Search products..." aria-label="Search">
+                <button class="btn btn-electric rounded-end-pill px-3" type="submit"><i class="bi bi-search"></i></button>
+              </div>
+            </form>
+            <a href="wishlist.html" class="nav-icon-btn position-relative" aria-label="View Wishlist">
+              <i class="bi bi-heart"></i>
+              <span class="badge-counter wishlist-counter" style="display: none;">0</span>
+            </a>
+            <a href="cart.html" class="nav-icon-btn position-relative" aria-label="View Cart">
+              <i class="bi bi-cart"></i>
+              <span class="badge-counter cart-counter" style="display: none;">0</span>
+            </a>
+            <a href="my-account.html" class="nav-icon-btn" aria-label="My Account"><i class="bi bi-person-circle"></i></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Cart Content Area -->
+  <main style="margin-top: 100px;" class="mb-5">
+    <div class="container">
+      
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb small">
+          <li class="breadcrumb-item"><a href="index.html" class="text-electric">Home</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Shopping Cart</li>
+        </ol>
+      </nav>
+
+      <h1 class="text-white mb-4">Shopping Cart</h1>
+
+      <!-- Empty Cart Message Placeholder -->
+      <div id="empty-cart-message" class="text-center py-5 border border-secondary rounded glass-card" style="display:none;">
+        <i class="bi bi-cart-x text-muted" style="font-size: 4rem; opacity: 0.5;"></i>
+        <h3 class="text-white mt-3">Your Cart is Empty</h3>
+        <p class="text-muted mb-4">You have not added any hardware items to your cart yet.</p>
+        <a href="products.html" class="btn btn-electric px-4 py-2 rounded-pill">Shop Products</a>
+      </div>
+
+      <!-- Cart Content Wrapper (Table + Summary Column) -->
+      <div id="cart-content-wrapper" class="row g-4" style="display:none;">
+        
+        <!-- Table column -->
+        <div class="col-lg-8">
+          <div class="card glass-card p-3 border border-secondary">
+            <div class="table-responsive">
+              <table class="table cart-table align-middle text-white mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col" width="45%">Product</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col" class="text-center">Remove</th>
+                  </tr>
+                </thead>
+                <tbody id="cart-table-body">
+                  <!-- Rendered dynamically by app.js -->
+                </tbody>
+              </table>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center mt-3 border-top border-secondary pt-3">
+              <a href="products.html" class="btn btn-sm btn-outline-light rounded-pill">
+                <i class="bi bi-arrow-left me-1"></i>Continue Shopping
+              </a>
+              <button class="btn btn-sm btn-outline-danger rounded-pill" onclick="if(confirm('Clear entire cart?')){CartManager.clearCart(); renderCart();}">
+                <i class="bi bi-trash-fill me-1"></i>Clear Shopping Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Summary column -->
+        <div class="col-lg-4">
+          <div class="card glass-card p-4 border border-secondary" id="cart-summary-card">
+            <h4 class="text-white mb-4 border-bottom border-secondary pb-2">Order Summary</h4>
+            
+            <div class="d-flex justify-content-between mb-3 text-muted">
+              <span>Subtotal:</span>
+              <strong class="text-white" id="cart-subtotal">Rs. 0</strong>
+            </div>
+            
+            <div class="d-flex justify-content-between mb-3 text-muted">
+              <span>Delivery Charges:</span>
+              <strong class="text-white" id="cart-delivery">Rs. 250</strong>
+            </div>
+            
+            <div class="d-flex justify-content-between mb-4 border-top border-secondary pt-3 text-white fs-5">
+              <span>Total Amount:</span>
+              <strong class="text-orange" id="cart-total">Rs. 0</strong>
+            </div>
+
+            <div class="alert alert-secondary bg-dark border-secondary small text-muted mb-4 py-2">
+              <i class="bi bi-info-circle-fill text-electric me-1"></i>
+              Get <strong>FREE shipping</strong> on orders totaling above Rs. 10,000!
+            </div>
+
+            <a href="checkout.html" class="btn btn-electric w-100 py-3 text-uppercase fw-bold">
+              Proceed to Checkout<i class="bi bi-arrow-right ms-2"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="pt-5 pb-3">
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4 col-md-6">
+          <a class="navbar-brand d-flex align-items-center gap-2 text-white mb-3" href="index.html">
+            <i class="bi bi-cpu text-electric" style="font-size: 1.8rem;"></i>
+            <span>TECH <span class="text-electric">EMPORIUM</span></span>
+          </a>
+          <p class="small text-muted mb-4">Premium computing systems and high-speed hardware accessories.</p>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="text-white mb-3">Quick Links</h5>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="index.html">Home</a></li>
+            <li class="mb-2"><a href="products.html">Shop Catalog</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-white mb-3">Customer Support</h5>
+          <p class="small text-muted mb-1">sales@techemporium.com.pk</p>
+        </div>
+      </div>
+      <hr class="border-secondary mb-3">
+      <div class="d-flex flex-wrap justify-content-between align-items-center small text-muted">
+        <p class="mb-0">&copy; 2026 Tech Emporium. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="btn-back-to-top" class="back-to-top" aria-label="Back to Top"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
