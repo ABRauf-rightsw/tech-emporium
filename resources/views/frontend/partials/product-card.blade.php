@@ -22,7 +22,7 @@
       </div>
       @endauth
       <a href="{{ route('shop.show', $product) }}" class="product-image-link hover-zoom">
-        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="product-image" loading="lazy">
+        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-image" loading="lazy" onerror="this.onerror=null;this.src='{{ asset(placeholder_image_path('product')) }}';">
       </a>
       <a href="{{ route('shop.show', $product) }}" class="product-quick-view">
         <i class="bi bi-eye me-1"></i> Quick View

@@ -11,7 +11,7 @@
     <tbody>
       @foreach($brands as $brand)
       <tr>
-        <td><img src="{{ asset($brand->logo) }}" width="40" alt=""></td>
+        <td><img src="{{ $brand->logo_url }}" width="40" alt=""></td>
         <td>{{ $brand->name }}</td>
         <td>{{ $brand->slug }}</td>
         <td>{{ $brand->products_count }}</td>

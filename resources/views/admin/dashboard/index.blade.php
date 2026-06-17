@@ -48,7 +48,7 @@
       <h5 class="mb-3">Recent Products</h5>
       @foreach($recentProducts as $product)
       <div class="d-flex align-items-center gap-2 mb-3">
-        <img src="{{ asset($product->image) }}" width="40" alt="">
+        <img src="{{ $product->image_url }}" width="40" alt="">
         <div><div class="small fw-bold">{{ Str::limit($product->name, 30) }}</div><div class="text-muted small">{{ format_pkr($product->effective_price) }}</div></div>
       </div>
       @endforeach

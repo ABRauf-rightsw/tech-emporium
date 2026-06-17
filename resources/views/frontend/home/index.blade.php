@@ -257,7 +257,7 @@ class="home-page"
         @foreach($brands->whereNotIn('slug', ['accessories', 'samsung']) as $brand)
         <div class="col">
           <a href="{{ route('shop.index', ['brand' => $brand->slug]) }}" class="brand-item" title="{{ $brand->name }}">
-            <img src="{{ asset($brand->logo) }}" alt="{{ $brand->name }}" loading="lazy">
+            <img src="{{ $brand->logo_url }}" alt="{{ $brand->name }}" loading="lazy" onerror="this.onerror=null;this.src='{{ asset(placeholder_image_path('brand')) }}';">
           </a>
         </div>
         @endforeach

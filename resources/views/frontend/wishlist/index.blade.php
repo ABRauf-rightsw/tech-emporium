@@ -18,7 +18,7 @@
       <div class="product-card">
         <div class="product-image-wrapper">
           <a href="{{ route('shop.show', $item->product) }}">
-            <img src="{{ asset($item->product->image) }}" alt="{{ $item->product->name }}" class="img-fluid" style="max-height: 180px;">
+            <img src="{{ $item->product->image_url }}" alt="{{ $item->product->name }}" class="img-fluid" style="max-height: 180px;" onerror="this.onerror=null;this.src='{{ asset(placeholder_image_path('product')) }}';">
           </a>
         </div>
         <div class="product-details">

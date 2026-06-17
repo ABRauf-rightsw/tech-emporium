@@ -9,6 +9,11 @@ class Brand extends Model
 {
     protected $fillable = ['name', 'slug', 'logo', 'status'];
 
+    public function getLogoUrlAttribute(): string
+    {
+        return image_url($this->logo, 'brand');
+    }
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);

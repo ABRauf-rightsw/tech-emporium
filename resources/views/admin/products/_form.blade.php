@@ -12,7 +12,7 @@
   <div class="col-md-4"><label class="form-label">Stock</label><input type="number" name="stock" class="form-control" value="{{ old('stock', $product?->stock ?? 0) }}" required></div>
   <div class="col-md-6"><label class="form-label">Category</label><select name="category_id" class="form-select" required>@foreach($categories as $cat)<option value="{{ $cat->id }}" @selected(old('category_id', $product?->category_id) == $cat->id)>{{ $cat->name }}</option>@endforeach</select></div>
   <div class="col-md-6"><label class="form-label">Brand</label><select name="brand_id" class="form-select" required>@foreach($brands as $brand)<option value="{{ $brand->id }}" @selected(old('brand_id', $product?->brand_id) == $brand->id)>{{ $brand->name }}</option>@endforeach</select></div>
-  <div class="col-md-6"><label class="form-label">Image</label><input type="file" name="image" class="form-control">@if($product?->image)<img src="{{ asset($product->image) }}" width="60" class="mt-2">@endif</div>
+  <div class="col-md-6"><label class="form-label">Image</label><input type="file" name="image" class="form-control">@if($product?->image)<img src="{{ $product->image_url }}" width="60" class="mt-2" alt="">@endif</div>
   <div class="col-md-6">
     <label class="form-label">Gallery Images</label>
     <input type="file" name="gallery[]" class="form-control" multiple>
@@ -20,7 +20,7 @@
     <div class="d-flex flex-wrap gap-2 mt-2">
       @foreach($product->images as $galleryImage)
       <div class="position-relative border rounded p-1">
-        <img src="{{ asset($galleryImage->image) }}" width="60" alt="">
+        <img src="{{ $galleryImage->image_url }}" width="60" alt="">
         <form action="{{ route('admin.products.images.destroy', $galleryImage) }}" method="POST" class="mt-1">
           @csrf @method('DELETE')
           <button type="submit" class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Remove this image?')">Remove</button>

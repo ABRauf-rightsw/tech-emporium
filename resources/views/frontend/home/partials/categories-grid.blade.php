@@ -10,7 +10,7 @@
 @endphp
 <div class="{{ $bentoClass }}">
   <a href="{{ $catUrl }}" class="{{ $cardClass }} hover-zoom">
-    <img src="{{ asset($category->image) }}" alt="{{ $category->name }}" loading="lazy" decoding="async">
+    <img src="{{ $category->image_url }}" alt="{{ $category->name }}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='{{ asset(placeholder_image_path('category')) }}';">
     <div class="home-category-overlay">
       <span class="home-category-tag">Category</span>
       <h3>{{ $category->name }}</h3>

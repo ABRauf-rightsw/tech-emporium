@@ -318,6 +318,12 @@ a {
   object-fit: contain;
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.product-image[src*="placeholders/no-image"] {
+  object-fit: contain;
+  padding: 1rem;
+  opacity: 0.9;
+}
+
 .product-card:hover .product-image {
   transform: scale(1.06);
 }

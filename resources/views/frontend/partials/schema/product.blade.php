@@ -10,7 +10,7 @@
     '@type' => 'Product',
     'name' => $product->name,
     'description' => strip_tags($product->description ?? ''),
-    'image' => [seo_absolute_url($product->image)],
+    'image' => [seo_absolute_url(image_path_or_placeholder($product->image, 'product'))],
     'sku' => 'TE-' . $product->id,
     'brand' => [
         '@type' => 'Brand',

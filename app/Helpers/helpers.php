@@ -21,6 +21,49 @@ if (! function_exists('clean_rich_text')) {
     }
 }
 
+if (! function_exists('placeholder_image_path')) {
+    function placeholder_image_path(string $type = 'product'): string
+    {
+        return match ($type) {
+            'category' => 'assets/images/placeholders/no-category.svg',
+            'brand' => 'assets/images/placeholders/no-brand.svg',
+            default => 'assets/images/placeholders/no-image.svg',
+        };
+    }
+}
+
+if (! function_exists('image_path_or_placeholder')) {
+    function image_path_or_placeholder(?string $path, string $type = 'product'): string
+    {
+        if ($path && trim($path) !== '') {
+            if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
+                return $path;
+            }
+
+            $publicPath = public_path(str_replace('/', DIRECTORY_SEPARATOR, ltrim($path, '/')));
+
+            if (is_file($publicPath)) {
+                return $path;
+            }
+        }
+
+        return placeholder_image_path($type);
+    }
+}
+
+if (! function_exists('image_url')) {
+    function image_url(?string $path, string $type = 'product'): string
+    {
+        $resolved = image_path_or_placeholder($path, $type);
+
+        if (str_starts_with($resolved, 'http://') || str_starts_with($resolved, 'https://')) {
+            return $resolved;
+        }
+
+        return asset($resolved);
+    }
+}
+
 if (! function_exists('shipping_cost')) {
     function shipping_cost(int $subtotal): int
     {

@@ -38,7 +38,7 @@
               <tr class="cart-item-row">
                 <td data-label="Product">
                   <div class="d-flex align-items-center gap-3">
-                    <img src="{{ asset($item->product->image) }}" width="60" height="60" class="cart-item-img" alt="">
+                    <img src="{{ $item->product->image_url }}" width="60" height="60" class="cart-item-img" alt="" onerror="this.onerror=null;this.src='{{ asset(placeholder_image_path('product')) }}';">
                     <a href="{{ route('shop.show', $item->product) }}" class="text-white">{{ $item->product->name }}</a>
                   </div>
                 </td>

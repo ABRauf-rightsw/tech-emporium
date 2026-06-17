@@ -14,7 +14,7 @@
       <tbody>
         @foreach($products as $product)
         <tr>
-          <td><img src="{{ asset($product->image) }}" width="40" alt=""></td>
+          <td><img src="{{ $product->image_url }}" width="40" alt=""></td>
           <td>{{ $product->name }}</td>
           <td>{{ $product->category->name }}</td>
           <td>{{ $product->brand->name }}</td>

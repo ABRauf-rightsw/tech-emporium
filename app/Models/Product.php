@@ -28,6 +28,11 @@ class Product extends Model
         return $this->sale_price ?? $this->price;
     }
 
+    public function getImageUrlAttribute(): string
+    {
+        return image_url($this->image, 'product');
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

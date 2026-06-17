@@ -3,7 +3,7 @@
   <a href="{{ route('shop.show', $heroProduct) }}" class="home-hero-product-card text-decoration-none">
     <span class="home-hero-product-badge"><i class="bi bi-lightning-fill me-1"></i> Featured Deal</span>
     <div class="home-hero-product-image">
-      <img src="{{ asset($heroProduct->image) }}" alt="{{ $heroProduct->name }}" loading="eager" decoding="async">
+      <img src="{{ $heroProduct->image_url }}" alt="{{ $heroProduct->name }}" loading="eager" decoding="async" onerror="this.onerror=null;this.src='{{ asset(placeholder_image_path('product')) }}';">
     </div>
     <div class="home-hero-product-body">
       <span class="home-hero-product-brand">{{ $heroProduct->brand->name }}</span>

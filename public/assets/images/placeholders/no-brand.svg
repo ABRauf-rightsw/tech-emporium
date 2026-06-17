@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" viewBox="0 0 200 120" role="img" aria-label="No brand logo">
+  <rect width="200" height="120" fill="#f8fafc"/>
+  <g transform="translate(100 52)" fill="none" stroke="#94a3b8" stroke-width="3">
+    <circle r="24"/>
+    <path d="M-14 0 H14 M0 -14 V14"/>
+  </g>
+  <text x="100" y="98" text-anchor="middle" fill="#64748b" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600">No Logo</text>
+</svg>

@@ -9,6 +9,11 @@ class Category extends Model
 {
     protected $fillable = ['name', 'slug', 'image', 'status'];
 
+    public function getImageUrlAttribute(): string
+    {
+        return image_url($this->image, 'category');
+    }
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);

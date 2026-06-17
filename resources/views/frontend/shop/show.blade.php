@@ -4,7 +4,7 @@
 @section('meta_description', Str::limit(strip_tags($product->description ?: $product->name . ' — available at Tech Emporium Pakistan with official warranty and fast delivery.'), 155))
 @section('meta_keywords', $product->name . ', ' . $product->brand->name . ', ' . $product->category->name . ', buy online Pakistan, Tech Emporium')
 @section('og_type', 'product')
-@section('og_image', $product->image)
+@section('og_image', image_path_or_placeholder($product->image, 'product'))
 @section('canonical', route('shop.show', $product))
 
 @push('json_ld')
@@ -49,7 +49,7 @@ class="product-detail-page"
         <span class="product-gallery-badge product-gallery-badge--bestseller">Best Seller</span>
         @endif
         <div class="product-gallery-image-wrap">
-          <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="product-gallery-image">
+          <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-gallery-image" onerror="this.onerror=null;this.src='{{ asset(placeholder_image_path('product')) }}';">
         </div>
       </div>
     </div>

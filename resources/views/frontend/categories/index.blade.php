@@ -17,7 +17,7 @@
     @foreach($categories as $category)
     <div class="col-md-6 col-lg-4 mb-4">
       <div class="category-card hover-zoom">
-        <img src="{{ asset($category->image) }}" alt="{{ $category->name }}" class="w-100 h-100 object-fit-cover">
+        <img src="{{ $category->image_url }}" alt="{{ $category->name }}" class="w-100 h-100 object-fit-cover" onerror="this.onerror=null;this.src='{{ asset(placeholder_image_path('category')) }}';">
         <div class="category-overlay">
           <h4 class="text-white">{{ $category->name }}</h4>
           <p class="text-muted small">{{ $category->products_count }} products</p>
