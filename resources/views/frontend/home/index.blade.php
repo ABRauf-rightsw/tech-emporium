@@ -15,8 +15,6 @@ class="home-page"
   ]])
 @endpush
 
-@php $heroProduct = $featuredProducts->first(); @endphp
-
 @section('content')
 
 {{-- Hero --}}
@@ -56,7 +54,7 @@ class="home-page"
           <div class="home-hero-stat-card">
             <i class="bi bi-grid"></i>
             <div>
-              <strong>{{ $categories->count() }}</strong>
+              <strong>{{ $totalCategories }}</strong>
               <span>Categories</span>
             </div>
           </div>
@@ -70,27 +68,14 @@ class="home-page"
         </div>
       </div>
 
-      @if($heroProduct)
-      <div class="col-lg-5 d-none d-lg-block">
-        <div class="home-hero-product-wrap">
-          <div class="home-hero-product-glow"></div>
-          <a href="{{ route('shop.show', $heroProduct) }}" class="home-hero-product-card text-decoration-none">
-            <span class="home-hero-product-badge"><i class="bi bi-lightning-fill me-1"></i> Featured Deal</span>
-            <div class="home-hero-product-image">
-              <img src="{{ asset($heroProduct->image) }}" alt="{{ $heroProduct->name }}" loading="eager">
-            </div>
-            <div class="home-hero-product-body">
-              <span class="home-hero-product-brand">{{ $heroProduct->brand->name }}</span>
-              <h3 class="home-hero-product-name">{{ $heroProduct->name }}</h3>
-              <div class="home-hero-product-footer">
-                <p class="home-hero-product-price">{{ format_pkr($heroProduct->effective_price) }}</p>
-                <span class="home-hero-product-cta">View <i class="bi bi-arrow-right"></i></span>
-              </div>
-            </div>
-          </a>
+      <div class="col-lg-5 d-none d-lg-block" id="home-hero-product-slot">
+        <div class="home-hero-product-skeleton home-skeleton-shimmer" aria-hidden="true">
+          <div class="home-skeleton-line home-skeleton-line--badge"></div>
+          <div class="home-skeleton-hero-image"></div>
+          <div class="home-skeleton-line home-skeleton-line--title"></div>
+          <div class="home-skeleton-line home-skeleton-line--price"></div>
         </div>
       </div>
-      @endif
     </div>
   </div>
   <div class="home-hero-aurora"></div>
@@ -140,11 +125,12 @@ class="home-page"
   <div class="container">
     <div class="home-quick-nav-inner">
       <span class="home-quick-nav-label">Quick Shop:</span>
-      <div class="home-quick-nav-scroll">
-        @foreach($categories->take(6) as $category)
-        <a href="{{ route('shop.index', ['category' => str_replace(['gaming-laptops','business-laptops','student-laptops'], ['gaming','business','student'], $category->slug)]) }}" class="home-quick-pill">{{ $category->name }}</a>
-        @endforeach
-        <a href="{{ route('shop.index') }}" class="home-quick-pill home-quick-pill--accent">All Products</a>
+      <div class="home-quick-nav-scroll" id="home-quick-nav-pills">
+        <span class="home-quick-pill home-skeleton-pill home-skeleton-shimmer" aria-hidden="true"></span>
+        <span class="home-quick-pill home-skeleton-pill home-skeleton-shimmer" aria-hidden="true"></span>
+        <span class="home-quick-pill home-skeleton-pill home-skeleton-shimmer" aria-hidden="true"></span>
+        <span class="home-quick-pill home-skeleton-pill home-skeleton-shimmer" aria-hidden="true"></span>
+        <span class="home-quick-pill home-skeleton-pill home-skeleton-shimmer" aria-hidden="true"></span>
       </div>
     </div>
   </div>
@@ -180,28 +166,8 @@ class="home-page"
       <p class="home-section-desc">Gaming, business, student laptops, monitors, accessories &amp; more.</p>
       <div class="home-section-line"></div>
     </div>
-    <div class="row g-4 home-bento align-items-stretch">
-      @foreach($categories as $index => $category)
-      @php
-        $catUrl = route('shop.index', ['category' => str_replace(['gaming-laptops','business-laptops','student-laptops'], ['gaming','business','student'], $category->slug)]);
-        $bentoClass = match($index) {
-          0 => 'col-12 col-lg-8',
-          1 => 'col-12 col-md-6 col-lg-4',
-          default => 'col-md-6 col-lg-4',
-        };
-        $cardClass = $index === 0 ? 'home-category-card home-category-card--wide' : ($index === 1 ? 'home-category-card home-category-card--tall' : 'home-category-card');
-      @endphp
-      <div class="{{ $bentoClass }}">
-        <a href="{{ $catUrl }}" class="{{ $cardClass }} hover-zoom">
-          <img src="{{ asset($category->image) }}" alt="{{ $category->name }}" loading="lazy">
-          <div class="home-category-overlay">
-            <span class="home-category-tag">Category</span>
-            <h3>{{ $category->name }}</h3>
-            <span class="home-category-link">Shop Now <i class="bi bi-arrow-right"></i></span>
-          </div>
-        </a>
-      </div>
-      @endforeach
+    <div class="row g-4 home-bento align-items-stretch" id="home-categories-grid">
+      @include('frontend.home.partials.category-skeleton')
     </div>
   </div>
 </section>
@@ -217,28 +183,9 @@ class="home-page"
       <a href="{{ route('shop.index') }}" class="home-section-link">View All <i class="bi bi-arrow-right"></i></a>
     </div>
     <div class="home-product-shell">
-      <div class="row g-4">
-        @foreach($featuredProducts as $product)
-          @include('frontend.partials.product-card', ['product' => $product])
-        @endforeach
+      <div class="row g-4" id="home-products-grid">
+        @include('frontend.home.partials.product-skeleton')
       </div>
-    </div>
-  </div>
-</section>
-
-{{-- Best Sellers --}}
-<section class="home-section home-reveal">
-  <div class="container">
-    <div class="home-section-header">
-      <span class="home-section-eyebrow">Top Picks</span>
-      <h2 class="home-section-title">Best Selling Laptops</h2>
-      <p class="home-section-desc">Most popular machines trusted by gamers, professionals &amp; students.</p>
-      <div class="home-section-line"></div>
-    </div>
-    <div class="row g-4">
-      @foreach($bestSellers as $product)
-        @include('frontend.partials.product-card', ['product' => $product])
-      @endforeach
     </div>
   </div>
 </section>
@@ -265,23 +212,6 @@ class="home-page"
           <p>{{ $item[2] }}</p>
         </div>
       </div>
-      @endforeach
-    </div>
-  </div>
-</section>
-
-{{-- Accessories --}}
-<section class="home-section home-reveal">
-  <div class="container">
-    <div class="home-section-header">
-      <span class="home-section-eyebrow">Complete Your Setup</span>
-      <h2 class="home-section-title">Accessories Collection</h2>
-      <p class="home-section-desc">Keyboards, mice, headphones, monitors, SSDs &amp; more.</p>
-      <div class="home-section-line"></div>
-    </div>
-    <div class="row g-4">
-      @foreach($accessories as $product)
-        @include('frontend.partials.product-card', ['product' => $product])
       @endforeach
     </div>
   </div>
@@ -404,6 +334,45 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     reveals.forEach((el) => el.classList.add('is-visible'));
   }
+
+  const fadeIn = (el) => {
+    if (!el) return;
+    el.classList.add('home-async-loaded');
+  };
+
+  fetch('{{ route('home.categories') }}', { headers: { 'Accept': 'application/json' } })
+    .then((res) => res.json())
+    .then((data) => {
+      const grid = document.getElementById('home-categories-grid');
+      const pills = document.getElementById('home-quick-nav-pills');
+      if (grid && data.html) {
+        grid.innerHTML = data.html;
+        fadeIn(grid);
+      }
+      if (pills && data.pills) {
+        pills.innerHTML = data.pills;
+        fadeIn(pills);
+      }
+    })
+    .catch(() => {});
+
+  fetch('{{ route('home.products') }}', { headers: { 'Accept': 'application/json' } })
+    .then((res) => res.json())
+    .then((data) => {
+      const grid = document.getElementById('home-products-grid');
+      const heroSlot = document.getElementById('home-hero-product-slot');
+      if (grid && data.html) {
+        grid.innerHTML = data.html;
+        fadeIn(grid);
+      }
+      if (heroSlot && data.hero) {
+        heroSlot.innerHTML = data.hero;
+        fadeIn(heroSlot);
+      } else if (heroSlot) {
+        heroSlot.remove();
+      }
+    })
+    .catch(() => {});
 });
 </script>
 @endpush

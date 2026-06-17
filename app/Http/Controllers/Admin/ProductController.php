@@ -53,6 +53,7 @@ class ProductController extends Controller
         $data['slug'] = $data['slug'] ?? Str::slug($data['name']);
         $data['is_featured'] = $request->boolean('is_featured');
         $data['is_best_seller'] = $request->boolean('is_best_seller');
+        $data['description'] = clean_rich_text($data['description'] ?? null);
 
         $product = Product::create($data);
 
@@ -106,6 +107,7 @@ class ProductController extends Controller
         $data['slug'] = $data['slug'] ?? Str::slug($data['name']);
         $data['is_featured'] = $request->boolean('is_featured');
         $data['is_best_seller'] = $request->boolean('is_best_seller');
+        $data['description'] = clean_rich_text($data['description'] ?? null);
 
         if ($request->hasFile('image')) {
             $data['image'] = $this->images->replace($request->file('image'), 'products', $product->image, $product);

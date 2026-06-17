@@ -23,6 +23,8 @@ Route::get('/contact', fn () => view('frontend.pages.contact'))->name('contact')
 Route::get('/faq', fn () => view('frontend.pages.faq'))->name('faq');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home/categories', [HomeController::class, 'categories'])->name('home.categories');
+Route::get('/home/products', [HomeController::class, 'products'])->name('home.products');
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::get('/robots.txt', function () {
     $lines = [

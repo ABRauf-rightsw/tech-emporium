@@ -2,7 +2,11 @@
 <div class="row g-3">
   <div class="col-md-6"><label class="form-label">Name</label><input type="text" name="name" class="form-control" value="{{ old('name', $product?->name) }}" required></div>
   <div class="col-md-6"><label class="form-label">Slug</label><input type="text" name="slug" class="form-control" value="{{ old('slug', $product?->slug) }}"></div>
-  <div class="col-12"><label class="form-label">Description</label><textarea name="description" class="form-control" rows="4">{{ old('description', $product?->description) }}</textarea></div>
+  <div class="col-12">
+    <label class="form-label">Description</label>
+    <textarea name="description" id="product-description" class="form-control" rows="6">{!! old('description', $product?->description ?? '') !!}</textarea>
+    <small class="text-muted">Use lists, bold text, and headings — formatting will appear the same on the product page.</small>
+  </div>
   <div class="col-md-4"><label class="form-label">Price (PKR)</label><input type="number" name="price" class="form-control" value="{{ old('price', $product?->price) }}" required></div>
   <div class="col-md-4"><label class="form-label">Sale Price (PKR)</label><input type="number" name="sale_price" class="form-control" value="{{ old('sale_price', $product?->sale_price) }}"></div>
   <div class="col-md-4"><label class="form-label">Stock</label><input type="number" name="stock" class="form-control" value="{{ old('stock', $product?->stock ?? 0) }}" required></div>
@@ -30,3 +34,44 @@
   <div class="col-md-4"><div class="form-check mt-4"><input type="checkbox" name="is_featured" value="1" class="form-check-input" id="featured" @checked(old('is_featured', $product?->is_featured))><label class="form-check-label" for="featured">Featured</label></div></div>
   <div class="col-md-4"><div class="form-check mt-4"><input type="checkbox" name="is_best_seller" value="1" class="form-check-input" id="bestseller" @checked(old('is_best_seller', $product?->is_best_seller))><label class="form-check-label" for="bestseller">Best Seller</label></div></div>
 </div>
+
+@push('styles')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs5.min.css">
+<style>
+  .note-editor.note-frame {
+    border-color: rgba(0, 102, 255, 0.15);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .note-toolbar {
+    background: #f8fafc;
+    border-bottom-color: rgba(0, 102, 255, 0.1);
+  }
+  .note-editable {
+    min-height: 180px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+</style>
+@endpush
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs5.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  $('#product-description').summernote({
+    height: 220,
+    placeholder: 'Write product description with bullet points, numbering, bold text...',
+    toolbar: [
+      ['style', ['style']],
+      ['font', ['bold', 'italic', 'underline', 'clear']],
+      ['para', ['ul', 'ol', 'paragraph']],
+      ['insert', ['link']],
+      ['view', ['fullscreen', 'codeview', 'help']]
+    ],
+    styleTags: ['p', 'h3', 'h4', 'h5'],
+  });
+});
+</script>
+@endpush

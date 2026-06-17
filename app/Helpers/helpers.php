@@ -7,6 +7,20 @@ if (! function_exists('format_pkr')) {
     }
 }
 
+if (! function_exists('clean_rich_text')) {
+    function clean_rich_text(?string $html): ?string
+    {
+        if ($html === null || trim($html) === '') {
+            return null;
+        }
+
+        $allowed = '<p><br><strong><b><em><i><u><ul><ol><li><h1><h2><h3><h4><h5><h6><a><blockquote><span><div><hr>';
+        $cleaned = trim(strip_tags($html, $allowed));
+
+        return $cleaned === '' ? null : $cleaned;
+    }
+}
+
 if (! function_exists('shipping_cost')) {
     function shipping_cost(int $subtotal): int
     {

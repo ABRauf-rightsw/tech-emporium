@@ -73,7 +73,9 @@ class="product-detail-page"
           @endif
         </div>
 
-        <p class="product-detail-desc">{{ $product->description }}</p>
+        @if($product->description)
+        <div class="product-detail-desc product-rich-content">{!! $product->description !!}</div>
+        @endif
 
         <div class="product-detail-highlights">
           <div class="product-highlight-item">
