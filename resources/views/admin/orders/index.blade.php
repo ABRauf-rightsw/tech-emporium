@@ -22,7 +22,13 @@
           </form>
         </td>
         <td>{{ $order->created_at->format('M d, Y') }}</td>
-        <td><a href="{{ route('admin.orders.show', $order) }}" class="btn btn-sm btn-custom-outline">View</a></td>
+        <td class="text-nowrap">
+          <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-sm btn-custom-outline">View</a>
+          <form action="{{ route('admin.orders.destroy', $order) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete order #{{ $order->order_number }}? This cannot be undone.')">
+            @csrf @method('DELETE')
+            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+          </form>
+        </td>
       </tr>
       @endforeach
     </tbody>

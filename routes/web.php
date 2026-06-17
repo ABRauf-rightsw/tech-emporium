@@ -97,7 +97,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('products/images/{productImage}', [ProductController::class, 'destroyImage'])->name('products.images.destroy');
         Route::resource('categories', CategoryController::class);
         Route::resource('brands', BrandController::class);
-        Route::resource('orders', AdminOrderController::class)->only(['index', 'show', 'update']);
+        Route::resource('orders', AdminOrderController::class)->only(['index', 'show', 'update', 'destroy']);
         Route::resource('customers', CustomerController::class)->only(['index', 'show']);
 
         Route::view('/inventory', 'admin.stubs.inventory')->name('inventory');

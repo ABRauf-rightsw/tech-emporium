@@ -34,6 +34,12 @@
         <select name="payment_status" class="form-select mb-2"><option value="pending" @selected($order->payment_status==='pending')>Pending</option><option value="paid" @selected($order->payment_status==='paid')>Paid</option></select>
         <button type="submit" class="btn btn-custom-primary w-100">Update Order</button>
       </form>
+      <form action="{{ route('admin.orders.destroy', $order) }}" method="POST" class="mt-3" onsubmit="return confirm('Delete this order permanently?')">
+        @csrf @method('DELETE')
+        <button type="submit" class="btn btn-outline-danger w-100">
+          <i class="bi bi-trash me-1"></i> Delete Order
+        </button>
+      </form>
     </div>
   </div>
 </div>

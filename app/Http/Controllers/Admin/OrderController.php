@@ -39,4 +39,14 @@ class OrderController extends Controller
 
         return back()->with('success', 'Order updated.');
     }
+
+    public function destroy(Order $order)
+    {
+        $orderNumber = $order->order_number;
+        $order->delete();
+
+        return redirect()
+            ->route('admin.orders.index')
+            ->with('success', "Order #{$orderNumber} deleted.");
+    }
 }
