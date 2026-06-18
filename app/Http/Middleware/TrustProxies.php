@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 class TrustProxies extends Middleware
 {
     /**
-     * The trusted proxies for this application.
+     * Trust reverse proxies (Cloudflare, LiteSpeed, cPanel). Required when the
+     * site is proxied so Laravel sees HTTPS and the correct client IP.
      *
      * @var array<int, string>|string|null
      */
-    protected $proxies;
+    protected $proxies = '*';
 
     /**
      * The headers that should be used to detect proxies.

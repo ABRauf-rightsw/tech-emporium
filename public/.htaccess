@@ -5,8 +5,11 @@
 
     RewriteEngine On
 
-    # Force HTTPS
+    # Force HTTPS (direct SSL, LiteSpeed/cPanel, or Cloudflare orange-cloud proxy)
     RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTP:X-Forwarded-SSL} !=on
+    RewriteCond %{HTTP:CF-Visitor} !'"scheme":"https"'
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
     # Handle Authorization Header
