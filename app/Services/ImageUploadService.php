@@ -76,6 +76,8 @@ class ImageUploadService
             return;
         }
 
+        $source = $this->applyExifOrientation($source, $file);
+
         $width = imagesx($source);
         $height = imagesy($source);
 
@@ -104,5 +106,38 @@ class ImageUploadService
             'image/gif' => imagecreatefromgif($path),
             default => null,
         };
+    }
+
+    /**
+     * @param  \GdImage|resource  $resource
+     * @return \GdImage|resource
+     */
+    private function applyExifOrientation($resource, UploadedFile $file)
+    {
+        if (! function_exists('exif_read_data')) {
+            return $resource;
+        }
+
+        if (! in_array($file->getMimeType(), ['image/jpeg', 'image/jpg'], true)) {
+            return $resource;
+        }
+
+        $exif = @exif_read_data($file->getRealPath());
+        if (! isset($exif['Orientation'])) {
+            return $resource;
+        }
+
+        $rotated = match ((int) $exif['Orientation']) {
+            3 => imagerotate($resource, 180, 0),
+            6 => imagerotate($resource, -90, 0),
+            8 => imagerotate($resource, 90, 0),
+            default => $resource,
+        };
+
+        if ($rotated !== $resource) {
+            imagedestroy($resource);
+        }
+
+        return $rotated;
     }
 }
