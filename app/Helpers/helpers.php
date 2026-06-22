@@ -21,6 +21,38 @@ if (! function_exists('clean_rich_text')) {
     }
 }
 
+if (! function_exists('split_product_description')) {
+    /**
+     * @return array{excerpt: string|null, body: string|null, has_more: bool}
+     */
+    function split_product_description(?string $html, int $excerptLength = 200): array
+    {
+        if ($html === null || trim(strip_tags($html)) === '') {
+            return [
+                'excerpt' => null,
+                'body' => null,
+                'has_more' => false,
+            ];
+        }
+
+        $plain = trim(preg_replace('/\s+/u', ' ', strip_tags($html)));
+
+        if (mb_strlen($plain) <= $excerptLength) {
+            return [
+                'excerpt' => $html,
+                'body' => null,
+                'has_more' => false,
+            ];
+        }
+
+        return [
+            'excerpt' => \Illuminate\Support\Str::limit($plain, $excerptLength),
+            'body' => $html,
+            'has_more' => true,
+        ];
+    }
+}
+
 if (! function_exists('placeholder_image_path')) {
     function placeholder_image_path(string $type = 'product'): string
     {

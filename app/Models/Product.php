@@ -33,6 +33,41 @@ class Product extends Model
         return image_url($this->image, 'product');
     }
 
+    /**
+     * @return array<int, array{url: string, alt: string}>
+     */
+    public function getGalleryItemsAttribute(): array
+    {
+        $items = [];
+        $seen = [];
+
+        if ($this->image) {
+            $url = $this->image_url;
+            $items[] = ['url' => $url, 'alt' => $this->name];
+            $seen[$url] = true;
+        }
+
+        foreach ($this->images as $galleryImage) {
+            $url = $galleryImage->image_url;
+
+            if (isset($seen[$url])) {
+                continue;
+            }
+
+            $items[] = ['url' => $url, 'alt' => $this->name];
+            $seen[$url] = true;
+        }
+
+        if ($items === []) {
+            $items[] = [
+                'url' => image_url(null, 'product'),
+                'alt' => $this->name,
+            ];
+        }
+
+        return $items;
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

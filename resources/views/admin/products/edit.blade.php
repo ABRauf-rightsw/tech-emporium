@@ -11,5 +11,12 @@
     <button type="submit" class="btn btn-custom-primary">Update Product</button>
     <a href="{{ route('admin.products.index') }}" class="btn btn-custom-outline">Cancel</a>
   </form>
+
+  @foreach($product->images as $galleryImage)
+  <form id="delete-gallery-{{ $galleryImage->id }}" action="{{ route('admin.products.images.destroy', $galleryImage) }}" method="POST" class="d-none">
+    @csrf
+    @method('DELETE')
+  </form>
+  @endforeach
 </div>
 @endsection

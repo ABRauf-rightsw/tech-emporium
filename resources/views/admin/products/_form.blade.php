@@ -5,7 +5,7 @@
   <div class="col-12">
     <label class="form-label">Description</label>
     <textarea name="description" id="product-description" class="form-control" rows="6">{!! old('description', $product?->description ?? '') !!}</textarea>
-    <small class="text-muted">Use lists, bold text, and headings — formatting will appear the same on the product page.</small>
+    <small class="text-muted">Use lists, bold text, and headings — formatting will appear the same on the product page. Long descriptions are supported.</small>
   </div>
   <div class="col-md-4"><label class="form-label">Price (PKR)</label><input type="number" name="price" class="form-control" value="{{ old('price', $product?->price) }}" required></div>
   <div class="col-md-4"><label class="form-label">Sale Price (PKR)</label><input type="number" name="sale_price" class="form-control" value="{{ old('sale_price', $product?->sale_price) }}"></div>
@@ -20,11 +20,14 @@
     <div class="d-flex flex-wrap gap-2 mt-2">
       @foreach($product->images as $galleryImage)
       <div class="position-relative border rounded p-1">
-        <img src="{{ $galleryImage->image_url }}" width="60" alt="">
-        <form action="{{ route('admin.products.images.destroy', $galleryImage) }}" method="POST" class="mt-1">
-          @csrf @method('DELETE')
-          <button type="submit" class="btn btn-sm btn-outline-danger w-100" onclick="return confirm('Remove this image?')">Remove</button>
-        </form>
+        <a href="{{ $galleryImage->image_url }}" target="_blank" rel="noopener" title="View full image">
+          <img src="{{ $galleryImage->image_url }}" width="60" alt="">
+        </a>
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-danger w-100 mt-1"
+          onclick="if (confirm('Remove this image?')) document.getElementById('delete-gallery-{{ $galleryImage->id }}').submit();"
+        >Remove</button>
       </div>
       @endforeach
     </div>
@@ -60,7 +63,10 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs5.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  $('#product-description').summernote({
+  const $description = $('#product-description');
+  const $form = $description.closest('form');
+
+  $description.summernote({
     height: 220,
     placeholder: 'Write product description with bullet points, numbering, bold text...',
     toolbar: [
@@ -72,6 +78,12 @@ document.addEventListener('DOMContentLoaded', function () {
     ],
     styleTags: ['p', 'h3', 'h4', 'h5'],
   });
+
+  if ($form.length) {
+    $form.on('submit', function () {
+      $description.val($description.summernote('code'));
+    });
+  }
 });
 </script>
 @endpush

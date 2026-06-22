@@ -24,6 +24,8 @@ class="product-detail-page"
   $discount = ($product->sale_price && $product->sale_price < $product->price)
     ? round((1 - $product->sale_price / $product->price) * 100)
     : 0;
+  $galleryItems = $product->gallery_items;
+  $descriptionParts = split_product_description($product->description);
 @endphp
 
 @section('content')
@@ -49,8 +51,48 @@ class="product-detail-page"
         <span class="product-gallery-badge product-gallery-badge--bestseller">Best Seller</span>
         @endif
         <div class="product-gallery-image-wrap">
-          <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-gallery-image" onerror="this.onerror=null;this.src='{{ asset(placeholder_image_path('product')) }}';">
+          <img
+            src="{{ $galleryItems[0]['url'] }}"
+            alt="{{ $galleryItems[0]['alt'] }}"
+            id="product-main-image"
+            class="product-gallery-image"
+            data-placeholder="{{ asset(placeholder_image_path('product')) }}"
+            onerror="this.onerror=null;this.src=this.dataset.placeholder;"
+          >
+          <button
+            type="button"
+            class="product-gallery-view-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#productImageModal"
+            aria-label="View full size image"
+          >
+            <i class="bi bi-arrows-fullscreen"></i>
+            <span>View</span>
+          </button>
         </div>
+
+        @if(count($galleryItems) > 1)
+        <div class="product-gallery-thumbs" role="list" aria-label="Product image gallery">
+          @foreach($galleryItems as $index => $item)
+          <button
+            type="button"
+            class="product-gallery-thumb {{ $index === 0 ? 'is-active' : '' }}"
+            data-image="{{ $item['url'] }}"
+            data-placeholder="{{ asset(placeholder_image_path('product')) }}"
+            aria-label="Show image {{ $index + 1 }}"
+            aria-pressed="{{ $index === 0 ? 'true' : 'false' }}"
+            role="listitem"
+          >
+            <img
+              src="{{ $item['url'] }}"
+              alt="{{ $item['alt'] }} — thumbnail {{ $index + 1 }}"
+              loading="lazy"
+              onerror="this.onerror=null;this.src='{{ asset(placeholder_image_path('product')) }}';"
+            >
+          </button>
+          @endforeach
+        </div>
+        @endif
       </div>
     </div>
 
@@ -73,8 +115,12 @@ class="product-detail-page"
           @endif
         </div>
 
-        @if($product->description)
-        <div class="product-detail-desc product-rich-content">{!! $product->description !!}</div>
+        @if($descriptionParts['excerpt'])
+          @if($descriptionParts['has_more'])
+          <p class="product-detail-desc product-detail-desc--excerpt">{{ $descriptionParts['excerpt'] }}</p>
+          @else
+          <div class="product-detail-desc product-rich-content">{!! $descriptionParts['excerpt'] !!}</div>
+          @endif
         @endif
 
         <div class="product-detail-highlights">
@@ -130,6 +176,18 @@ class="product-detail-page"
     </div>
   </div>
 
+  @if($descriptionParts['has_more'] && $descriptionParts['body'])
+  <section class="product-description-section">
+    <div class="product-description-card">
+      <div class="product-description-header">
+        <h2 class="product-description-title">Product Description</h2>
+        <div class="product-description-line"></div>
+      </div>
+      <div class="product-description-body product-rich-content">{!! $descriptionParts['body'] !!}</div>
+    </div>
+  </section>
+  @endif
+
   @if($related->count())
   <section class="product-related-section">
     <div class="product-related-header">
@@ -145,4 +203,63 @@ class="product-detail-page"
   @endif
 </div>
 
+<div class="modal fade product-image-modal" id="productImageModal" tabindex="-1" aria-labelledby="productImageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header border-0 pb-0">
+        <h2 class="modal-title h6 text-truncate pe-3" id="productImageModalLabel">{{ $product->name }}</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body pt-2 text-center">
+        <img
+          src="{{ $galleryItems[0]['url'] }}"
+          alt="{{ $product->name }}"
+          id="product-modal-image"
+          class="product-modal-image"
+          data-placeholder="{{ asset(placeholder_image_path('product')) }}"
+          onerror="this.onerror=null;this.src=this.dataset.placeholder;"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const mainImage = document.getElementById('product-main-image');
+  const modalImage = document.getElementById('product-modal-image');
+  const thumbs = document.querySelectorAll('.product-gallery-thumb');
+
+  if (!mainImage || !thumbs.length) {
+    return;
+  }
+
+  const setActiveImage = (url) => {
+    mainImage.src = url;
+    if (modalImage) {
+      modalImage.src = url;
+    }
+  };
+
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      const url = thumb.dataset.image;
+      if (!url) {
+        return;
+      }
+
+      setActiveImage(url);
+
+      thumbs.forEach((item) => {
+        const isActive = item === thumb;
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+    });
+  });
+});
+</script>
+@endpush
