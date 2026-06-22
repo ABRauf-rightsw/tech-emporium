@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset_version('assets/css/style.css') }}">
   @stack('styles')
 </head>
 <body data-laravel="true" @yield('body-class')>
@@ -35,7 +35,7 @@
   </button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="{{ asset('assets/js/app.js') }}"></script>
+  <script src="{{ asset_version('assets/js/app.js') }}"></script>
   @stack('scripts')
 </body>
 </html>

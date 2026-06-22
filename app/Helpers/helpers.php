@@ -7,6 +7,17 @@ if (! function_exists('format_pkr')) {
     }
 }
 
+if (! function_exists('asset_version')) {
+    function asset_version(string $path): string
+    {
+        $normalized = ltrim(str_replace('\\', '/', $path), '/');
+        $fullPath = public_path(str_replace('/', DIRECTORY_SEPARATOR, $normalized));
+        $version = is_file($fullPath) ? (string) filemtime($fullPath) : (string) time();
+
+        return asset($normalized) . '?v=' . $version;
+    }
+}
+
 if (! function_exists('clean_rich_text')) {
     function clean_rich_text(?string $html): ?string
     {

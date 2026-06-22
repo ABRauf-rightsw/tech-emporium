@@ -6,7 +6,7 @@
   <title>Admin Login | Tech Emporium</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="{{ asset('admin/assets/css/admin-style.css') }}">
+  <link rel="stylesheet" href="{{ asset_version('admin/assets/css/admin-style.css') }}">
 </head>
 <body>
   <div class="login-bg">
@@ -38,6 +38,6 @@
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="{{ asset('admin/assets/js/admin.js') }}"></script>
+  <script src="{{ asset_version('admin/assets/js/admin.js') }}"></script>
 </body>
 </html>
